@@ -1,0 +1,299 @@
+.index_wrap{
+	width: 100%;
+	background:#f7d152  url(../i/images/addbg.png)repeat 0 0;
+	min-height: 100%;
+}
+.bg_head{
+	width: 100%;
+	height: 1041px;
+	min-width: 1000px;
+	position: absolute;
+	top: 0;
+	background: url(../i/images/bg_header.png) no-repeat center 0;
+}
+.phold55{
+	height: 55px;
+}
+.phold5{
+	height: 5px;
+}
+.phold10{
+	height: 10px;
+}
+.phold15{
+	height: 15px;
+}
+.phold20{
+	height: 20px;
+}
+.phold25{
+	height: 25px;
+}
+.phold30{
+	height: 30px;
+}
+.phold40{
+	height: 40px;
+}
+.phold45{
+	height: 45px;
+}
+.abtn_wrap{
+	padding-left: 70px;
+}
+.abtn_box{
+	width: 304px;
+	height: 87px;
+	float: left;
+	margin-right: -20px;
+}
+.abtn_active{
+	width: 224px;
+	height: 67px;
+	display: block;
+	margin: 5px auto 0;
+}
+.abtn_active:hover{
+	width: 304px;
+	height: 87px;
+	margin: 0;
+}
+.abtn_active1{
+	background: url(../i/images/a_btn_skinr.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+.abtn_active2{
+	background: url(../i/images/a_btn_upnew.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+.abtn_active3{
+	background: url(../i/images/a_btn-downsucair.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+.con_wrap{
+	width: 944px;
+	padding: 23px 28px 50px;
+	height: auto;
+	background: #FFFFFF;
+	border-radius: 7px;
+}
+.tab_wrap{
+	padding-left: 132px;
+}
+.tab{
+	width: 162px;
+	height: 38px;
+	float: left;
+	margin-right: 90px;
+	cursor: pointer;
+}
+.tab_1{
+	background: url(../i/images/tab1.png) no-repeat right 0;
+}
+.tab_2{
+	background: url(../i/images/tab2.png) no-repeat right 0;
+}
+.tab_3{
+	background: url(../i/images/tab3.png) no-repeat right 0;
+}
+.tab:hover,.tab.active{
+	background-position: 0 0;
+}
+.tab_line{
+	width: 580px;
+	height: 19px;
+	border-bottom: 1px solid #e6e6e6;
+	margin: 0 auto;
+}
+.p_con{
+	font-size: 14px;
+	line-height: 18px;
+	color: #000000;
+	text-indent:2em;
+}
+.flow_wrap{
+	width: 100%;
+	height: 124px;
+	background: #f7f7f7 url(../i/images/icon_lc_03.png) no-repeat center center;
+	border-radius: 7px;
+	position: relative;
+}
+.time{
+	text-align: center;
+	width: 170px;
+	position: absolute;
+	top: 0;
+	padding-top: 15px;
+}
+.time1{
+	left: 100px;
+}
+.time2{
+	left: 430px;
+}
+.time3{
+	left: 770px;
+}
+.p_h3{
+	font-size: 18px;
+	line-height: 32px;
+	color: #666666;
+	font-weight: bold;
+}
+.p_h5{
+	font-size: 14px;
+	line-height: 24px;
+	color: #666666;
+}
+.ppp{
+	line-height: 10px;
+}
+.prize_ul{
+	width: 966px;
+}
+.prize_ul li{
+	float: left;
+	width: 300px;
+	margin-top: 10px;
+	margin-right: 22px;
+}
+.prize_tit{
+	font-size: 22px;
+	line-height: 38px;
+	color: #666666;
+	text-align: center;
+}
+.prize_img{
+	width: 300px;
+	height: 262px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.prize_img img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.p_gz_tit{
+	font-size: 18px;
+	line-height: 22px;
+	color: #666666;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
+.p_gz{
+	font-size: 14px;
+	line-height: 22px;
+	color: #666666;
+}
+.copybgsg{
+	width: 700px;
+	height: 255px;
+	margin: 0 auto;
+	background: #f7d152 url(../i/images/font_bottom.png) no-repeat center center;
+}
+.works_wrap{
+	width: 100%;
+	overflow: hidden;
+}
+.works_indexul{
+	width: 961px;
+}
+.works_indexul li{
+	width: 303px;
+	height: 247px;
+	overflow: hidden;
+	margin-right: 17px;
+	float: left;
+}
+.works_indexul li img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	float: left;
+}
+.a_btn_more{
+	width: 224px;
+	height: 67px;
+	background: url(../i/images/abtnmore.png) no-repeat center center;
+	margin: 0 auto;
+}
+
+.form_wrap{
+	width: 676px;
+	height: auto;
+	border: 2px solid #f7d152;
+	margin: 0 auto;
+	border-radius: 8px;
+}
+.form_box{
+	width: 648px;
+	height: auto;
+	border: 2px dashed #f7d152;
+	margin: 13px auto;
+	border-radius: 6px;
+}
+.form_tit{
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 40px;
+}
+.form_con{
+	margin-bottom: 15px;
+}
+.form_infor{
+	width: 135px;
+	padding-right: 10px;
+	line-height: 46px;
+	text-align: right;
+	color: #333333;
+	font-size: 26px;
+}
+.input_text{
+	width: 348px;
+	height: 44px;
+	font-size: 20px;
+	line-height: 44px;
+	border: 1px solid #e0e0e0;
+	background: #fafafa;
+	padding-left: 10px;
+	border-radius: 7px;
+}
+.add_file_box{
+	width: 225px;
+	float: left;
+}
+.input_file{
+	list-style: none;
+	width: 196px;
+	height: 159px;
+	background: #FFFFFF url(../i/images/add.png) no-repeat center center;
+	border: 2px dashed #f7d152;
+}
+.form_p1{
+	font-size: 20px;
+	line-height: 46px;
+	color: #666666;
+	
+}
+.p_file{
+	font-size: 18px;
+	line-height: 46px;
+	color: #666666;
+	text-align: center;
+}
+.form_btn_box{
+	width: 640px;
+	margin: 0 auto;
+}
+.a_btn_backindex{
+	width: 304px;
+	height: 87px;
+	background: url(../i/images/abtn_backindex.png) no-repeat center center;
+}
+.a_btn_sub{
+	width: 304px;
+	height: 87px;
+	background: url(../i/images/abtn_sub.png) no-repeat center center;
+}
