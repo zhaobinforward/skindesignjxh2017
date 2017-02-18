@@ -6,27 +6,20 @@ require R_ROOT.'/include/inc.session.php';
 
 $showpic = 0;
 //手机作品展示*4
-$sql = "select pickey9 from skindesignali_upload where checked=1 and status=1 order by create_time desc limit 4";
-$wtop4 = $MDB->db_query($sql);
-foreach($wtop4 as $k=>&$v){
+$sql = "select pickey9 from skindesignjxh2017_upload where checked=1 and status=1 order by create_time desc limit 4";
+$wtop3 = $MDB->db_query($sql);
+foreach($wtop3 as $k=>&$v){
 	$v['pickey9'] = CLOUD_URL.end(explode("/",$v['pickey9']));
 }
 unset($v);
 
-//pc作品展示*4
-$sql = "select skin_id,picThumb from skin_info where name like binary '%阿狸%' and sign like '%,30825,%' and checked=1 and killed=0 order by date desc limit 4";
-//$sql = "select skin_id,picThumb from skin_info where name like binary '%阿狸%' and sign like '%,42,%' and checked=1 and killed=0 order by date desc limit 4";
-$sql = iconv("UTF-8","GB2312",$sql);
-$ptop4 = $PC_MDB->db_query($sql);
 
-if( count($wtop4)>=4 && count($ptop4)>=4 ){
+if( count($wtop3)>=3 ){
 	$showpic = 1;
 }
 
-foreach($ptop4 as $k=>&$v){
-	$v['picThumb'] = PC_PIC.$v['picThumb'];
-}
-unset($v);
+include template('index');
+exit;
 
 $reginfo = array();
 if($_G['uid'] > 0) {

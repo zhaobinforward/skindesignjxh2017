@@ -85,13 +85,13 @@ class nMysql {
 	function _initconnection() {
 		if($this->m_link==0) {
 			$real_host = $this->m_host.":".$this->m_port;
-			if(!$this->m_link = mysql_connect($real_host,$this->m_user,$this->m_password)) {
+			if(!$this->m_link = mysqli_connect($real_host,$this->m_user,$this->m_password)) {
 				//die('Could not connect: ' . mysql_error());
 				die($this->Err("mysql connect"));
 			}
-			mysql_query("SET NAMES '". $this->m_charset ."'");
+			mysqli_query("SET NAMES '". $this->m_charset ."'");
 			if ('' != $this->m_name) {
-				mysql_select_db($this->m_name, $this->m_link) or die($this->Err("use $this->m_name"));
+				mysqli_select_db($this->m_name, $this->m_link) or die($this->Err("use $this->m_name"));
 			}             
 		}
 	}
@@ -102,7 +102,7 @@ class nMysql {
 			if ($this->m_link == 0) {
 				$this->_initconnection();
 			}
-			mysql_select_db($this->m_name, $this->m_link) or die($this->Err("use $database"));
+			mysqli_select_db($this->m_name, $this->m_link) or die($this->Err("use $database"));
 		}
 	}
 
@@ -110,7 +110,7 @@ class nMysql {
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		$result=mysql_query($SQL,$this->m_link) or die($this->Err($SQL)); 
+		$result=mysqli_query($SQL,$this->m_link) or die($this->Err($SQL));
 		return $result; 
 	} 
 	
@@ -131,14 +131,14 @@ class nMysql {
 		{
 			foreach ($phs as $ph) 
 			{
-				$ph = "'" . mysql_real_escape_string($ph) . "'";
+				$ph = "'" . mysqli_real_escape_string($ph) . "'";
 				$SQL = substr_replace(
 					$SQL, $ph, strpos($SQL, '?'), 1
 				);
 			}
 		}
 
-		$result=mysql_query($SQL, $this->m_link) or die($this->Err($SQL)); 
+		$result=mysqli_query($SQL, $this->m_link) or die($this->Err($SQL));
 		
 		return $result; 
 	}
@@ -158,30 +158,30 @@ class nMysql {
 		{
 			foreach ($phs as $ph) 
 			{
-				$ph = "'" . mysql_real_escape_string($ph) . "'";
+				$ph = "'" . mysqli_real_escape_string($ph) . "'";
 				$SQL = substr_replace(
 					$SQL, $ph, strpos($SQL, '?'), 1
 				);
 			}
 		}
 
-		$result=mysql_query($SQL, $this->m_link) or die($this->Err($SQL)); 
+		$result=mysqli_query($SQL, $this->m_link) or die($this->Err($SQL));
 		return $this->FetchAll($result);
 	}
 	
 	function GetErrno() {
-		return $this->m_link ? mysql_errno($this->m_link) : mysql_errno();
+		return $this->m_link ? mysqli_errno($this->m_link) : mysqli_errno();
 	}
 	
 	function GetError() {
-		return $this->m_link ? mysql_error($this->m_link) : mysql_error();
+		return $this->m_link ? mysqli_error($this->m_link) : mysqli_error();
 	}
 	
 	function FetchArray($result) { 
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		$row = mysql_fetch_array($result, MYSQL_ASSOC);
+		$row = mysqli_fetch_array($result, MYSQL_ASSOC);
 		return $row;
 	}
 
@@ -192,7 +192,7 @@ class nMysql {
 			$this->_initconnection();
 		}
 		$rows = array();
-		while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 			$rows[] = $row;
 		}
 		return $rows;
@@ -202,10 +202,10 @@ class nMysql {
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		$rowno=@mysql_num_rows($result);
+		$rowno=@mysqli_num_rows($result);
 		if($rowno>0) {
 			for($i=0;$i<$rowno;$i++) {
-				$rows[$i] = @mysql_fetch_row($result);
+				$rows[$i] = @mysqli_fetch_row($result);
 			}
 		}
 		return $rows; 
@@ -229,7 +229,7 @@ class nMysql {
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		return @mysql_query($sql, $this->m_link) ? 1 : 0;
+		return @mysqli_query($sql, $this->m_link) ? 1 : 0;
 	}
 
 	/**	功能 写入数据至表
@@ -251,28 +251,28 @@ class nMysql {
 			$this->_initconnection();
 		}
 		error_log($sql,3,"/tmp/sqlxxxx.log");
-		return @mysql_query($sql, $this->m_link) ? ($return_insert_id ? @mysql_insert_id($this->m_link) : 1) : 0;
+		return @mysqli_query($sql, $this->m_link) ? ($return_insert_id ? @mysqli_insert_id($this->m_link) : 1) : 0;
 	}
 	
 	function FreeResult(&$result) { 
 		if ($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		return mysql_free_result($result) or die($this->Err()); 
+		return mysqli_free_result($result) or die($this->Err());
 	} 
 
 	function close() {
 		if ($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		mysql_close($this->m_link) or die($this->Err());
+		mysqli_close($this->m_link) or die($this->Err());
 	}
 
 	function getInsertID() {
 		if ($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		return mysql_insert_id($this->m_link);
+		return mysqli_insert_id($this->m_link);
 	}
 }
 	
