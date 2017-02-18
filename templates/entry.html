@@ -1,0 +1,105 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php include template('header');?>
+<style type="text/css">
+	.dynamic_box{ width:100%; text-align:center; }
+	.dynamic_box .gif_box img{ margin:0 15px; width:450px; }
+	
+	.eTxt{ padding:15px 27px; }
+	.eTxt p{ color:#fff; font-size:22px; line-height:48px; padding-bottom:40px; }
+	.eTxt p span{ font-size:18px; }
+	.eTxt p i{ border-bottom:2px solid #98ff12; padding-bottom:5px; }
+	.subBtn ul li.rumen a{ background:url(static/i/sjyq/navBtnhover1.png) no-repeat left bottom; }
+	.nav ul li.sheji a{ width:233px; background:url(static/i/shejiDown.png) no-repeat center center; }
+</style>
+<!-- 返回顶端 -->
+<div id="return_top">
+    <a alt="返回顶端" title="返回顶端" href="javascript:;scroll(0,0);"></a>
+</div>
+
+<div class="main_con">
+	<div class="skin_box">
+    	<div class="skin_con">
+        	<?php include template('subnav');?>
+        	<div class="dynamic_box">
+                <img src="static/i/sjyq/rm_01.png" />
+                <div class="eTxt">
+                    <p>
+                        这个是基本要求，一定要遵守哦~<br />
+                        搜狗输入法手机皮肤有九键和二十六键两个界面，每个界面又由不同的固定按键组成，设计师可以通过<br />
+                        对每个按键的不同设计来体现皮肤风格，摘录了一些要点如下：
+                    </p>
+                </div>
+                <img src="static/i/sjyq/rm_02.png" />
+                <div class="eTxt">
+                    <p>
+                       每一个按键背景都可以不一样，比如：
+                    </p>
+                </div>
+                <img src="static/i/sjyq/rm_03.jpg" />
+                <div class="eTxt">
+                    <p>
+                        机械键盘的字母键每张背景颜色都不一样，功能键和快捷符号键也都可以哦~
+                    </p>
+                </div>
+                <img src="static/i/sjyq/rm_04.png" />
+                <div class="eTxt">
+                    <p>
+                        虽然按键的布局不能改变，有效区域不能改变，但是可以通过图片的透明区域来控制按键的视觉区域，<br />
+                        这样就可以做出很多异形的按钮啦，同时按键大小也可以自由控制。比如下方这款冰淇淋小店，红框中<br />
+                        的功能键可以做成冰淇淋、雪糕的形状。
+                    </p>
+                </div>
+                <img src="static/i/sjyq/rm_05.jpg" />
+                <div class="eTxt">
+                    <p>
+                        所有按键的前景都可以自定义，可以使用字体、贴图等不同的前景模式，位置也可以进行小的调整，<br />
+						但是不能超出按键区域哦，比如:
+                    </p>
+                </div>
+                <img src="static/i/sjyq/rm_06.png" />
+                <div class="eTxt">
+                    <p>
+                        这款皮肤的工具条icon、前景字、前景图片以及前景位置都进行了调整<br />
+                        前景图片虽然支持更改，但是一定要能保证能明确表现按键的意思哦
+                    </p>
+                </div>
+                <img src="static/i/sjyq/rm_07.png" />
+                <div class="eTxt">
+                    <p>
+                        静态的皮肤已经渐渐不能满足用户的胃口，所以搜狗输入法手机皮肤也支持动效啦！可以来个开场动画，<br />
+                        可以来个按键特效，还可以来只蝴蝶在背景上翩翩飞舞~更多的可能等待你们来创造！<br /><br />
+						简单的介绍就到这里了，皮肤作为输入法的外衣，<i>一定不要忘了它始终需要是一个很好用的工具，所以</i><br />
+                        <i>再美再酷炫的设计，都要在手机皮肤能正常使用的前提下进行哦，</i>不然眼前摆着一个美人儿却不能接触<br />
+                        也是很难过的呢~
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--//.main_con-->
+<?php include template('footer');?>
+
+<script type="text/javascript">
+
+	//返回顶端方法
+	$(window).scroll(function () {
+		//添加节点
+		if ($("#return_top").length < 1) {
+			var $a = $("<a href='javascript:;scroll(0,0);'  title='返回顶端' alt='返回顶端'></a>");
+			var node = document.createElement("div");
+			node.setAttribute("id", "return_top");
+			document.body.appendChild(node);
+			$("#return_top").append($a);
+		}
+		//判断是否显示
+		if ($(window).scrollTop()) {
+	
+			$("#return_top").show();
+		} else {
+	
+			$("#return_top").hide();
+		}
+	});
+
+</script>
+<script type="text/javascript">$(function(){setTimeout(function(){pb_count('page_entry')},250)});</script>

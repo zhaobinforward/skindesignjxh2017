@@ -1,0 +1,78 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>提示消息-搜狗手机输入法</title>
+<script type="text/javascript" src="http://wap.dl.pinyin.sogou.com/wapdl/hole/201411/06/jquery.1.7.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/c/style.css" />
+<style type="text/css">
+.cont_wrap {
+	width:1000px;margin:160px auto 24px;font-family:微软雅黑,宋体,serif,Arial,Verdana,Geneva,Helvetica,sans-serif;font-size:12px
+}
+.upload_wrap {
+padding: 5px 0 20px;
+margin-top: 20px;
+background-color: #fff;
+}
+.upload_wrap .capt {
+width: 960px;
+margin: 0 auto;
+padding-bottom: 2px;
+font-size: 18px;
+font-weight: normal;
+color: #666;
+border-bottom: 1px solid #edecec;
+}
+</style>
+</head>
+<body>
+<div class="cont_wrap">
+	<div class="upload_wrap">
+		<h2 class="capt">提示消息</h2>
+		<div class="prompt">
+			<div class="prompt_top"></div>
+			<div class="prompt_con">
+				<dl class="cl">
+					<dt></dt>
+					<dd>
+						<?php if($status==1){?>
+						<span class="prompt_ok"></span>
+						<?php }elseif($status==0){?>
+						<span class="prompt_x"></span>
+						<?php }else{?>
+						<span class="Prompt_tip"></span>
+						<?php }?>
+					</dd>
+					<dd id="message" class="<?php if($status==1){?>m_ok<?php }elseif($status==0){?>m_x<?php }else{?>m_tip<?php }?>">
+						<h2><?php echo $message;?></h2>
+						<p class="prompt_jump">
+							<?php if($waiting&&$jumpurl){?>页面自动 <a id="href" href="<?php echo $jumpurl;?>">跳转...</a> 等待时间： <b id="wait"><?php echo $waiting;?></b><br><?php }?>
+							<a href="#" onclick="javascript:history.go(-1);return false;">返回上一页</a>&nbsp;或者&nbsp;<a href="./">返回首页</a>
+						</p>
+					</dd>
+				</dl>
+			</div>
+			<!--//.prompt_con-->
+		  <div class="prompt_btm"></div>
+		</div>
+	</div>
+</div>
+<?php if($waiting&&$jumpurl){?>
+<script type="text/javascript">
+$(document).ready(function(){
+	var wait = document.getElementById('wait');
+	var href = document.getElementById('href').href;
+	var interval = setInterval(function(){
+		var time = --wait.innerHTML;
+		if(time <= 0) {
+			wait.innerHTML = 0;
+			clearInterval(interval);
+			document.location.href = href;
+		};
+	}, 1000);
+});
+</script>
+<?php }?>
+</body>
+</html>

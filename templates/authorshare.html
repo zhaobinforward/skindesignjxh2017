@@ -1,0 +1,55 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php include template('header');?>
+<style type="text/css">
+	.authorshare{ width:100%; padding:0 13px; text-align:left;}
+	.authorshare:after{ content:""; display:block; clear:both; visibility:hidden; width:0; height:0; }
+	.authorshare ul li{ width:449px; padding:15px 19px 40px; float:left; display:inline-block; background:#372f56; margin-bottom:80px; border-radius:25px; -webkit-border-radius:25px; behavior:url(PIE.htc); position:relative;}
+	.authorshare ul li.second_author{ float:right; }
+	.authorshare ul li a{ display:block; font-size:30px; line-height:44px; color:#fff; }
+	.authorshare ul li a:hover{ text-decoration:none; }
+	.authorshare ul li p.author{ font-size:18px; line-height:18px; color:#fff; padding:10px 0 20px; }
+	.shareImg{ background:#8650cf; width:100%; height:265px; border-radius:25px; -webkit-border-radius:25px; behavior:url(PIE.htc); position:relative; }
+	.subBtn ul li.authorShare a{ background:url(static/i/sjyq/navBtnhover4.png) no-repeat left bottom; }
+	.nav ul li.sheji a{ width:233px; background:url(static/i/shejiDown.png) no-repeat center center; }
+</style>
+<div class="main_con">
+	<div class="skin_box">
+    	<div class="skin_con">
+        	<?php include template('subnav');?>
+        	<div class="authorshare">
+                <ul>
+                	<li>
+                        <a href="authorshare.php?id=1" onmousedown="javascript:pb_count('authorshare_1');">
+                            手把手教你设计Wacom同款输入法皮肤
+                        </a>
+                        <p class="author">by. 郗鉴</p>
+                        <div class="shareImg"><a href="authorshare.php?id=1" onmousedown="javascript:pb_count('authorshare_1');"><img src="static/i/sjyq/txtImg1.png" /></a></div>
+                    </li>
+                	<li class="second_author">
+                        <a href="authorshare.php?id=2" onmousedown="javascript:pb_count('authorshare_2');">
+                            从手机主题到搜狗输入法手机皮肤的华丽转身
+                        </a>
+                        <p class="author">by. BenS团队B哥</p>
+                        <div class="shareImg"><a href="authorshare.php?id=2" onmousedown="javascript:pb_count('authorshare_2');"><img src="static/i/sjyq/txtImg2.png" /></a></div>
+                    </li>
+                	<li>
+                        <a href="authorshare.php?id=3" onmousedown="javascript:pb_count('authorshare_3');">
+                            如何从无到有制作一款皮肤
+                        </a>
+                        <p class="author">by. EROO</p>
+                        <div class="shareImg"><a href="authorshare.php?id=3" onmousedown="javascript:pb_count('authorshare_3');"><img src="static/i/sjyq/txtImg3.png" /></a></div>
+                    </li>
+                	<li class="second_author">
+                        <a href="authorshare.php?id=4" onmousedown="javascript:pb_count('authorshare_4');">
+                            如何表现输入法皮肤的质感？
+                        </a>
+                        <p class="author">by. Timur</p>
+                        <div class="shareImg"><a href="authorshare.php?id=4" onmousedown="javascript:pb_count('authorshare_4');"><img src="static/i/sjyq/txtImg4.png" /></a></div>
+                    </li>
+                </ul>	
+            </div>
+        </div>
+    </div>
+</div><!--//.main_con-->
+<script type="text/javascript">$(function(){setTimeout(function(){pb_count('page_authorshare')},250)});</script>
+<?php include template('footer');?>

@@ -1,0 +1,176 @@
+<?php include template(header);?>
+		<div class="wrapper index_wrap">
+			<div class="mainWrap">
+				<div class="tit_wrap">
+					<img src="static/i/alitit.png" class="imgwap"/>
+				</div>
+				<div class="wrap_show_box">
+					<img src="static/i/alishowtit.png" class="imgblock" />
+					<div class="show_hd">
+						<ul class="show_hdul tab-hd">
+							<a class="show_pc btn_tb" href="wapshow.php" onclick="MtaH5.clickStat('14')"></a>
+							<a class="show_3g btn_tb" href="pcshow.php" onclick="MtaH5.clickStat('15')"></a>
+							<a class="show_pri btn_tb active" href="javascript:void(0);" onclick="MtaH5.clickStat('16')"></a>
+						</ul>
+					</div>
+					<div class="show_bd">
+						<ul class="show_bdul tab-bd">
+							<!--获奖产品-->
+							<li>
+								<div class="part2_wrap">
+									<h2 class="h2_tit h2_prize1">一等奖</h2>
+								</div>
+								<div class="prize_1 cl">
+									<div class="prize_1l fl">
+										<div class="prize_1limg">
+											<img src="<?php if($wap_prize[10][0]['pickey9']){echo $wap_prize[10][0]['pickey9'];}?>" width="352"  height="289"/>
+										</div>
+										<div class="prize_1lcon cl">
+										<span class="skin_name1"><?php echo $wap_prize[10][0]['skin_name'];  ?></span><span class="fr">by.<?php echo $wap_prize[10][0]['author_name'];?></span>
+										</div>
+									</div>
+									<div class="prize_1r fl">
+										<div class="prize_1rimg">
+											<img src="<?php echo $pc_prize[5]['picThumb'] ?>" width="352" height="177" />
+										</div>
+										<div class="prize_1lcon cl">
+										<span class="pskin_name1"><?php echo $pc_prize[5]['name'];  ?></span><span class="fr">by.<?php echo $pc_prize[5]['author']; ?></span>
+										</div>
+									</div>
+								</div>
+								<div class="part2_wrap">
+									<h2 class="h2_tit h2_prize">二等奖</h2>
+								</div>
+								<ul class="prize_2ul cl">
+									<li>
+										<div class="prize_2img1">
+											<img src="<?php if($wap_prize[9][0]['pickey9']){echo $wap_prize[9][0]['pickey9'];}?>" width="272" height="223">
+										</div>
+										<div class="prize_2con cl">
+										<span class="skin_name2"><?php echo $wap_prize[9][0]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[9][0]['author_name'];?></span>
+										</div>
+										<div class="prize_2img2">
+											<img src="<?php echo $pc_prize[6]['picThumb'] ?>"  width="272" height="137"/>
+										</div>
+										<div class="prize_2con cl">
+										<span class="skin_name2"><?php echo $pc_prize[6]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[6]['author']; ?></span>
+										</div>
+									</li>
+									<li>
+										<div class="prize_2img1">
+											<img src="<?php if($wap_prize[9][1]['pickey9']){echo $wap_prize[9][1]['pickey9'];}?>" width="272" height="223">
+										</div>
+										<div class="prize_2con cl">
+										<span class="skin_name2"><?php echo $wap_prize[9][1]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[9][1]['author_name'];?></span>
+										</div>
+										<div class="prize_2img2">
+											<img src="<?php echo $pc_prize[8]['picThumb'] ?>" width="272" height="137"/>
+										</div>
+										<div class="prize_2con cl">
+										<span class="skin_name2"><?php echo $pc_prize[8]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[8]['author'] ?></span>
+										</div>
+									</li>
+									<li>
+										<div class="prize_2img1">
+											<img src="<?php if($wap_prize[9][2]['pickey9']){echo $wap_prize[9][2]['pickey9'];}?>" width="272" height="223">
+										</div>
+										<div class="prize_2con cl">
+										<span class="skin_name2"><?php echo $wap_prize[9][2]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[9][2]['author_name'];?></span>
+										</div>
+										<div class="prize_2img2">
+											<img src="<?php echo $pc_prize[2]['picThumb'] ?>" width="272" height="137"/>
+										</div>
+										<div class="prize_2con cl">
+										<span class="skin_name2"><?php echo $pc_prize[2]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[2]['author'] ?></span>
+										</div>
+									</li>
+								</ul>
+								<div class="part2_wrap">
+									<h2 class="h2_tit h2_prize">三等奖</h2>
+								</div>
+								<ul class="prize_3ul cl">
+									<li>
+										<div class="prize_3img1">
+											<img src="<?php if($wap_prize[8][0]['pickey9']){echo $wap_prize[8][0]['pickey9'];}?>" width="179" height="147">
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $wap_prize[8][0]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[8][0]['author_name'];?></span>
+										</div>
+										<div class="prize_3img2">
+											<img src="<?php echo $pc_prize[0]['picThumb'] ?>" width="179" height="90" />
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $pc_prize[0]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[0]['author'] ?></span>
+										</div>
+									</li>
+									<li>
+										<div class="prize_3img1">
+											<img src="<?php if($wap_prize[8][1]['pickey9']){echo $wap_prize[8][1]['pickey9'];}?>" width="179" height="147">
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $wap_prize[8][1]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[8][1]['author_name'];?></span>
+										</div>
+										<div class="prize_3img2">
+											<img src="<?php echo $pc_prize[1]['picThumb'] ?>" width="179" height="90" />
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $pc_prize[1]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[1]['author'] ?></span>
+										</div>
+									</li>
+									<li>
+										<div class="prize_3img1">
+											<img src="<?php if($wap_prize[8][2]['pickey9']){echo $wap_prize[8][2]['pickey9'];}?>" width="179" height="147">
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $wap_prize[8][2]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[8][2]['author_name'];?></span>
+										</div>
+										<div class="prize_3img2">
+											<img src="<?php echo $pc_prize[3]['picThumb'] ?>" width="179" height="90"  />
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $pc_prize[3]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[3]['author'] ?></span>
+										</div>
+									</li>
+									<li>
+										<div class="prize_3img1">
+											<img src="<?php if($wap_prize[8][3]['pickey9']){echo $wap_prize[8][3]['pickey9'];}?>" width="179" height="147">
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $wap_prize[8][3]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[8][3]['author_name'];?></span>
+										</div>
+										<div class="prize_3img2">
+											<img src="<?php echo $pc_prize[4]['picThumb'] ?>" width="179" height="90"  />
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $pc_prize[4]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[4]['author'] ?></span>
+										</div>
+									</li>
+									<li>
+										<div class="prize_3img1">
+											<img src="<?php if($wap_prize[8][4]['pickey9']){echo $wap_prize[8][4]['pickey9'];}?>" width="179" height="147">
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $wap_prize[8][4]['skin_name'];?></span><span class="fr">by.<?php echo $wap_prize[8][4]['author_name'];?></span>
+										</div>
+										<div class="prize_3img2">
+											<img src="<?php echo $pc_prize[7]['picThumb'] ?>" width="179" height="90" />
+										</div>
+										<div class="prize_3con cl">
+										<span class="skin_name3"><?php echo $pc_prize[7]['name'] ?></span><span class="fr">by.<?php echo $pc_prize[7]['author'] ?></span>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php include template(footer); ?>
+		</div>		
+	</body>
+<script>
+	$(function(){
+		
+	});
+</script>
+</html>

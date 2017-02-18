@@ -1,0 +1,577 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php include template('header');?>
+<?php if(!empty($list) && is_array($list)){?>
+<?php foreach($list as $value){$skins = array_merge(isset($skins)?$skins:array(), $value);}?>
+<script type="text/javascript">var skins = <?php echo json_encode($skins)?>;</script>
+<?php }?>
+
+<div class="main_con">
+    <div class="hjzp_title">
+        <div class="title_box">
+            <a href="gallery.php" class="cansai"></a>
+            <a href="gallery.php?view=hits" class="huojiang"></a>
+        </div>
+    </div>
+	<div class="hits_tip" style="display:none">
+		<p>亲爱的们，让你们久等了，对此小编想先说一声万分抱歉，不过同时也带来了几个重磅好消息！</p>
+		<p>由于佳作众多，既然难以抉择，所以小编决定任性一回！</p>
+		<p>增加了12名最佳创意奖，最佳体验奖增至12名，优秀奖增至40名。</p>
+		<p>另外最佳体验奖和优秀奖的奖金也都将double！！</p>
+		<p>同时，一二三等奖、最佳体验奖和最佳创意奖的获奖者都将获得搜狗荣誉聘书，只要你愿意就可以来搜狗</p>
+		<p style="text-indent: -208px;">工作啦~另外优秀奖的获得者也将享有搜狗招聘绿色通道，将获得优先内推机会。</p>
+		<p>最后，感谢各位设计师的热情参与和评委老师们的专业审核。</p>
+		<p>输入法皮肤设计，我们从来都是认真的！</p>
+	</div>
+	<div class="hits_tip2" style="margin:12px auto 100px;font-size:0;text-align:center"><img src="static/i/hits_tip.png" /></div>
+<!--一等奖start-->
+    <div class="first_prize">
+        <div class="first_prize_con">
+            <p>¥19880&nbsp;&nbsp;Wacom新帝移动电脑2代+20000元奖金+搜狗荣誉聘书</p>
+        </div>
+    </div>
+    <div class="first_con">
+	<?php $skin = isset($list[10][0]) ? $list[10][0] : array();?>
+        <ul class="first_ul">
+            <li style="margin-bottom:72px">
+                <div class="first_img"><?php if($skin['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$skin['id']?>)"><img src="<?php echo$skin['piccover']?>" /></a><?php }?></div>
+                <div class="first_txt">
+                    <div class="first_mes">
+                        <p class="first_name"><?php echo$skin['skin_name']?><br /><span>by.&nbsp;<?php echo$skin['author_name']?></span></p>
+                        <a href="javascript:;" class="myShare"<?php if($skin['id']){?> onclick="show_share(<?php echo $skin['id']?>,<?php echo $skin['grade']?>)"<?php }?>><img src="static/i/sharebtn.png" /></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+<!--一等奖end-->
+<!--二等奖start-->
+    <div class="second_prize">
+        <div class="second_prize_con">
+            <p>¥7380  Wacom新帝13HD touch DTH-1300+5000元奖金+搜狗荣誉聘书</p>
+        </div>
+    </div>
+    <div class="second_con">
+	<?php $skins = isset($list[9]) ? $list[9] : array();?>
+        <ul class="cl">
+            <li style="margin-bottom:72px">
+                <div class="second_img"><?php if($skins[0]['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$skins[0]['id']?>)"><img src="<?php echo$skins[0]['piccover']?>" /></a><?php }?></div>
+                <div class="second_txt">
+                    <div class="second_mes">
+                        <p class="second_name"><?php echo$skins[0]['skin_name']?></p>
+                        <p class="second_author">by.&nbsp;<?php echo$skins[0]['author_name']?></p>
+                    </div>
+                    <a href="javascript:;" class="comShare"<?php if($skins[0]['id']){?> onclick="show_share(<?php echo $skins[0]['id']?>,<?php echo $skins[0]['grade']?>)"<?php }?>><img src="static/i/sharebtn.png" /></a>
+                </div>
+            </li>
+            <li class="second_li" style="margin-bottom:72px">
+                <div class="second_img"><?php if($skins[1]['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$skins[1]['id']?>)"><img src="<?php echo$skins[1]['piccover']?>" /></a><?php }?></div>
+                <div class="second_txt">
+                    <div class="second_mes">
+                        <p class="second_name"><?php echo$skins[1]['skin_name']?></p>
+                        <p class="second_author">by.&nbsp;<?php echo$skins[1]['author_name']?></p>
+                    </div>
+                    <a href="javascript:;" class="comShare"<?php if($skins[1]['id']){?> onclick="show_share(<?php echo $skins[1]['id']?>,<?php echo $skins[1]['grade']?>)"<?php }?>><img src="static/i/sharebtn.png" /></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+<!--二等奖end-->
+<!--三等奖start-->
+    <div class="third_prize">
+        <div class="third_prize_con">
+            <p>¥1950  Wacom影拓Pro PTH-451+3000元奖金+搜狗荣誉聘书</p>
+        </div>
+    </div>
+    <div class="works_con third_con">
+	<?php $skins = array_pad(isset($list[8])?$list[8]:array(),3,array());?>
+	<?php $ii=0;$len=count($skins);?>
+        <ul class="cl" style="margin-bottom:72px">
+		<?php foreach($skins as $value){?>
+			<?php $ii++?>
+			<li class="<?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+				<div class="works_img"><?php if($value['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$value['id']?>)"><img src="<?php echo$value['piccover']?>" /></a><?php }?></div>
+				<div class="works_txt">
+					<div class="works_mes">
+						<p class="work_name" title="<?php echo $value['skin_name']?>"><?php echo$value['skin_name']?></p>
+						<p class="author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo$value['author_name']?></p>
+					</div>
+					<a href="javascript:;" class="myShare"<?php if($value['id']){?> onclick="show_share(<?php echo $value['id']?>,<?php echo $value['grade']?>)"<?php }?>><img src="static/i//sharebtn.png" /></a>
+				</div>
+			</li>
+			<?php if($ii>=3){break;}/*限制数量*/?>
+		<?php }?>
+        </ul>
+    </div>
+<!--三等奖end-->
+<!--最佳体验奖start-->
+    <div class="best_prize">
+        <div class="best_prize_con"><p style="text-indent: -72px;">2000元奖金+搜狗荣誉聘书</p></div>
+    </div>
+	<div class="works_con best_con" style="padding-bottom:60px">
+	<?php $skins = array_pad(isset($list[7])?$list[7]:array(),12,array());?>
+	<?php $ii=0;$len=count($skins);?>
+		<ul class="cl">
+		<?php foreach($skins as $value){?>
+			<?php $ii++?>
+			<li class="<?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+				<div class="works_img"><?php if($value['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$value['id']?>)"><img src="<?php echo$value['piccover']?>" /></a><?php }?></div>
+				<div class="works_txt">
+					<div class="works_mes">
+						<p class="work_name" title="<?php echo $value['skin_name']?>"><?php echo$value['skin_name']?></p>
+						<p class="author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo$value['author_name']?></p>
+					</div>
+					<a href="javascript:;" class="myShare"<?php if($value['id']){?> onclick="show_share(<?php echo $value['id']?>,<?php echo $value['grade']?>)"<?php }?>><img src="static/i//sharebtn.png" /></a>
+				</div>
+			</li>
+			<?php if($ii>=12){break;}/*限制数量*/?>
+		<?php }?>
+		</ul>
+    </div>
+<!--最佳体验奖end-->
+<!--最佳创意奖start-->
+	<div class="best_prize best_prize2">
+        <div class="best_prize_con"><p style="text-indent: -72px;">2000元奖金+搜狗荣誉聘书</p></div>
+    </div>
+	<div class="works_con best_con" style="padding-bottom:60px">
+	<?php $skins = array_pad(isset($list[6])?$list[6]:array(),12,array());?>
+	<?php $ii=0;$len=count($skins);?>
+		<ul class="cl">
+		<?php foreach($skins as $value){?>
+			<?php $ii++?>
+			<li class="<?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+				<div class="works_img"><?php if($value['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$value['id']?>)"><img src="<?php echo$value['piccover']?>" /></a><?php }?></div>
+				<div class="works_txt">
+					<div class="works_mes">
+						<p class="work_name" title="<?php echo $value['skin_name']?>"><?php echo$value['skin_name']?></p>
+						<p class="author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo$value['author_name']?></p>
+					</div>
+					<a href="javascript:;" class="myShare"<?php if($value['id']){?> onclick="show_share(<?php echo $value['id']?>,<?php echo $value['grade']?>)"<?php }?>><img src="static/i//sharebtn.png" /></a>
+				</div>
+			</li>
+			<?php if($ii>=12){break;}/*限制数量*/?>
+		<?php }?>
+		</ul>
+    </div>
+<!--最佳创意奖end-->
+<!--优秀奖start-->
+    <div class="fifth_prize">
+        <div class="fifth_prize_con"><p style="text-indent:-96px">1000元奖金+搜狗招聘绿色通道</p></div>
+    </div>
+    <div class="works_con best_con" style="padding-bottom:60px">
+	<?php $skins = array_pad(isset($list[5])?$list[5]:array(),40,array());?>
+	<?php $ii=0;$len=count($skins);?>
+		<ul class="cl">
+		<?php foreach($skins as $value){?>
+			<?php $ii++?>
+			<li class="<?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+				<div class="works_img"><?php if($value['piccover']){?><a href="javascript:;" onclick="show_skin(<?php echo$value['id']?>)"><img src="<?php echo$value['piccover']?>" /></a><?php }?></div>
+				<div class="works_txt">
+					<div class="works_mes">
+						<p class="work_name" title="<?php echo $value['skin_name']?>"><?php echo$value['skin_name']?></p>
+						<p class="author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo$value['author_name']?></p>
+					</div>
+					<a href="javascript:;" class="myShare"<?php if($value['id']){?> onclick="show_share(<?php echo $value['id']?>,<?php echo $value['grade']?>)"<?php }?>><img src="static/i//sharebtn.png" /></a>
+				</div>
+			</li>
+			<?php if($ii>=40){break;}/*限制数量*/?>
+		<?php }?>
+		</ul>
+    </div>
+<!--优秀奖end-->
+	<div class="cooper" style="width:1074px;margin:0 auto;"><p>合作方：<img src="static/i/logo_uichina.png" /></p></div>
+	<div class="noer" style="width:100%;height:40px;"></div>
+</div><!--//.main_con-->
+<style type="text/css">
+#skin_pop .pop_con{
+	width:896px;
+	height:374px;
+	margin: -180px 0 0 -448px;
+}
+#skin_pop .sharecon {
+	padding-top: 48px;
+}
+.skinpic_view, .skininf_view{
+	float: left;
+}
+.skinpic_view {
+	width: 325px;
+	height: 265px;
+	padding-left: 48px;
+}
+.skininf_view {
+	width: 446px;
+	height: 265px;
+	padding-left: 48px;
+	color: #fff;
+	font-size: 14px;
+	position: relative;
+}
+.skininf_view>p {
+	text-align: left;
+}
+#skinf_name {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+#skinf_author {
+	margin-bottom: 20px;
+}
+#skinf_share {
+	width: 146px;
+	height: 40px;
+	display: block;
+	background: url(static/i/skinfshare.png) no-repeat scroll 50% 50%;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	text-indent: -99999px;
+}
+#skinf_desc {
+	height: 106px;
+	overflow: hidden;
+	vertical-align:text-bottom;word-wrap:normal;overflow:hidden;-o-text-overflow:ellipsis;/* Opera */ text-overflow:ellipsis;/* IE, Safari (WebKit) */
+}
+
+.flexslider {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	zoom: 1;
+	background-color: #8650cf;
+    border-radius: 20px;
+}
+
+.flexslider .slides {
+	width: 100%;
+	height: 100%;
+}
+.flexslider .slides li {
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	text-align: center;
+	overflow: hidden;
+}
+
+.flexslider .slides li img {
+	/*max-width: 100%;*/
+	/*max-height: 100%;*/
+	width: 100%;
+	height: 100%;
+	_width: 100%;
+	_height: 100%;
+}
+
+.flex-direction-nav a {
+	width: 40px;
+	height: 80px;
+	line-height: 99em;
+	overflow: hidden;
+	margin: -40px 0 0;
+	display: block;
+	background: no-repeat scroll 50% 50%;
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	cursor: pointer;
+	-webkit-transition: all .3s ease;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+.flex-direction-nav .flex-next {
+	right: 0;
+	background-image: url(static/i/arrow-right.png);
+}
+
+.flex-direction-nav .flex-prev {
+	background-image: url(static/i/arrow-left.png);
+}
+
+.flexslider:hover .flex-next {
+	opacity: 0.8;
+	filter: alpha(opacity=20);
+}
+
+.flexslider:hover .flex-prev {
+	opacity: 0.8;
+	filter: alpha(opacity=20);
+}
+
+.flexslider .flex-next, .flexslider .flex-prev {
+	opacity: 0;
+	filter: alpha(opacity=100);
+	background-color: #000;
+}
+
+.flexslider:hover .flex-next:hover,
+.flexslider:hover .flex-prev:hover {
+}
+
+.flex-control-nav {
+	width: 100%;
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+}
+
+.flex-control-nav li {
+	margin: 0 2px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.flex-control-paging li a {
+	display: block;
+	height: 8px;
+	overflow: hidden;
+	text-indent: -99em;
+	width: 8px;
+	cursor: pointer;
+	border-radius: 4px;
+	background-color: #fff;
+}
+
+.flex-control-paging li a.flex-active,
+.flex-control-paging li.active a {
+	background-color: #7dffe7;
+}
+
+.flexslider .slides a img {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+</style>
+<div id="skin_pop" class="pop_wrapper" style="display:none">
+    <div class="pop_bg"></div>
+    <div class="pop_con">
+        <img src="static/i/share_close.png" id="shareclose" class="closeBtn" onclick="javascript:$('#skin_pop').hide()" />
+		<div class="sharecon cl" style="padding-top:48px">
+			<div class="skinpic_view">
+				<div id="banner_tabs" class="flexslider">
+					<ul class="slides">
+						<li><img src="http://img.ui.cn/data/file/1/5/5/584551.png"></li>
+						<li><img src="http://img.ui.cn/data/file/0/1/6/584610.png"></li>
+					</ul>
+					<ul class="flex-direction-nav">
+						<li><a class="flex-prev" href="javascript:;">Previous</a></li>
+						<li><a class="flex-next" href="javascript:;">Next</a></li>
+					</ul>
+					<ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+						<li><a>1</a></li>
+						<li><a>2</a></li>
+					</ol>
+				</div>
+			</div>
+			<div class="skininf_view">
+				<p id="skinf_name"></p>
+				<p id="skinf_author">作者：</p>
+				<p id="skinf_desc"></p>
+				<a id="skinf_share" href="javascript:;" onclick="showshare()">分享</a>
+			</div>
+		</div>
+    </div>
+</div><!--//.pop_wrapper-->
+<script type="text/javascript">
+function show_skin(id) {
+	var skin = get_skin_byid(id);
+	if($.isEmptyObject(skin)) {
+		return;
+	}
+	$('#skin_pop #banner_tabs').html(function(){
+		var _html = '';
+		_html += '<ul class="slides">';
+		_html += '<li><img src="'+skin.pickey9+'"></li>';
+		_html += '<li><img src="'+skin.pickey26+'"></li>';
+		_html += '</ul>';
+		_html += '<ul class="flex-direction-nav">';
+		_html += '<li><a class="flex-prev" href="javascript:;">Previous</a></li>';
+		_html += '<li><a class="flex-next" href="javascript:;">Next</a></li>';
+		_html += '</ul>';
+		_html += '<ol id="bannerCtrl" class="flex-control-nav flex-control-paging">';
+		_html += '<li class="active"><a>1</a></li>';
+		_html += '<li><a>2</a></li>';
+		_html += '</ol>';
+		return _html;
+	});
+	$('#skin_pop #skinf_name').html(skin.skin_name);
+	$('#skin_pop #skinf_author').html('作者：'+skin.author_name);
+	$('#skin_pop #skinf_desc').html(skin.intro);
+	$('#skin_pop #skinf_share').unbind('click').click(function(){show_share(skin.id,skin.grade)});
+	var bannerSlider = new Slider($('#banner_tabs'), {
+		time: 5000,
+		delay: 400,
+		event: 'hover',
+		auto: false,
+		mode: 'fade',
+		controller: $('#bannerCtrl'),
+		activeControllerCls: 'active'
+	});
+	$('#banner_tabs .flex-prev').click(function() {
+		bannerSlider.prev()
+	});
+	$('#banner_tabs .flex-next').click(function() {
+		bannerSlider.next()
+	});
+	$('#skin_pop').show();
+}
+$(function ($, window, document, undefined) {
+    Slider = function (container, options) {
+        /*
+        options = {
+            auto: true,
+            time: 3000,
+            event: 'hover' | 'click',
+            mode: 'slide | fade',
+            controller: $(),
+            activeControllerCls: 'className',
+            exchangeEnd: $.noop
+        }
+        */
+
+        "use strict"; //stirct mode not support by IE9-
+
+        if (!container) return;
+
+        var options = options || {},
+            currentIndex = 0,
+            cls = options.activeControllerCls,
+            delay = options.delay,
+            isAuto = options.auto,
+            controller = options.controller,
+            event = options.event,
+            interval,
+            slidesWrapper = container.children().first(),
+            slides = slidesWrapper.children(),
+            length = slides.length,
+            childWidth = container.width(),
+            totalWidth = childWidth * slides.length;
+
+        function init() {
+            var controlItem = controller.children();
+
+            mode();
+
+            event == 'hover' ? controlItem.mouseover(function () {
+                stop();
+                var index = $(this).index();
+
+                play(index, options.mode);
+            }).mouseout(function () {
+                isAuto && autoPlay();
+            }) : controlItem.click(function () {
+                stop();
+                var index = $(this).index();
+
+                play(index, options.mode);
+                isAuto && autoPlay();
+            });
+
+            isAuto && autoPlay();
+        }
+
+        //animate mode
+        function mode() {
+            var wrapper = container.children().first();
+
+            options.mode == 'slide' ? wrapper.width(totalWidth) : wrapper.children().css({
+                'position': 'absolute',
+                'left': 0,
+                'top': 0
+            })
+                .first().siblings().hide();
+        }
+
+        //auto play
+        function autoPlay() {
+            interval = setInterval(function () {
+                triggerPlay(currentIndex);
+            }, options.time);
+        }
+
+        //trigger play
+        function triggerPlay(cIndex) {
+            var index;
+
+            (cIndex == length - 1) ? index = 0 : index = cIndex + 1;
+            play(index, options.mode);
+        }
+
+        //play
+        function play(index, mode) {
+            slidesWrapper.stop(true, true);
+            slides.stop(true, true);
+
+            mode == 'slide' ? (function () {
+                if (index > currentIndex) {
+                    slidesWrapper.animate({
+                        left: '-=' + Math.abs(index - currentIndex) * childWidth + 'px'
+                    }, delay);
+                } else if (index < currentIndex) {
+                    slidesWrapper.animate({
+                        left: '+=' + Math.abs(index - currentIndex) * childWidth + 'px'
+                    }, delay);
+                } else {
+                    return;
+                }
+            })() : (function () {
+                if (slidesWrapper.children(':visible').index() == index) return;
+                slidesWrapper.children().fadeOut(delay).eq(index).fadeIn(delay);
+            })();
+
+            try {
+                controller.children('.' + cls).removeClass(cls);
+                controller.children().eq(index).addClass(cls);
+            } catch (e) { }
+
+            currentIndex = index;
+
+            options.exchangeEnd && typeof options.exchangeEnd == 'function' && options.exchangeEnd.call(this, currentIndex);
+        }
+
+        //stop
+        function stop() {
+            clearInterval(interval);
+        }
+
+        //prev frame
+        function prev() {
+            stop();
+
+            currentIndex == 0 ? triggerPlay(length - 2) : triggerPlay(currentIndex - 2);
+
+            isAuto && autoPlay();
+        }
+
+        //next frame
+        function next() {
+            stop();
+
+            currentIndex == length - 1 ? triggerPlay(-1) : triggerPlay(currentIndex);
+
+            isAuto && autoPlay();
+        }
+
+        //init
+        init();
+
+        //expose the Slider API
+        return {
+            prev: function () {
+                prev();
+            },
+            next: function () {
+                next();
+            }
+        }
+    };
+
+}(jQuery, window, document));
+</script>
+<script type="text/javascript">$(function(){setTimeout(function(){pb_count('page_gallery_hits')},250)});</script>
+<?php include template('footer');?>

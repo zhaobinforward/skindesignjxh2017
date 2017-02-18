@@ -1,0 +1,89 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php include template('header');?>
+<style type="text/css">
+	.authorshare_4_box{ width:100%; padding-bottom:75px; }
+	.myTxt{ padding:5px 27px; }
+	.hTxt{ padding:15px 27px; }
+	.myTxt p{ color:#fff; font-size:22px; line-height:48px; text-align:left; text-indent:44px; }
+	.myTxt p.author{ font-size:24px; text-align:center; }
+	.subBtn ul li.authorShare a{ background:url(static/i/sjyq/navBtnhover4.png) no-repeat left bottom; }
+	.nav ul li.sheji a{ width:233px; background:url(static/i/shejiDown.png) no-repeat center center; }
+</style>
+<!-- 返回顶端 -->
+<div id="return_top">
+    <a alt="返回顶端" title="返回顶端" href="javascript:;scroll(0,0);"></a>
+</div>
+
+<div class="main_con">
+	<div class="skin_box">
+    	<div class="skin_con">
+        	<?php include template('subnav');?>
+        	<div class="authorshare_4_box">
+                <img src="static/i/sjyq/img4_01.png" />
+                <div class="myTxt">
+                    <p class="author">作者：B哥</p>
+                    <p>
+                       对于很多手头已经有多款优秀手机主题的设计师来说，其实搜狗输入法手机皮肤跟手机主题正好是互补关系的。因为能够用到统一风格的输入法皮肤，对于强迫症患者来说总是治愈的。
+                    </p>
+                    <p>
+                       然而做过手机主题的作者做输入法皮肤，并不能直接拿来主义！我们团队就有好几个同学，在最开始从主题转型过来的时候，碰到了下面这种情况，他们手机主题做的很优秀，结果出来的皮肤并不如人意。
+                    </p>
+                    <p>
+                       主题和皮肤的侧重点是不一样的，主题的话，一般重头是在锁屏交互，以及图标和壁纸，而通常情况下设计师不会把精力花在主题拨号界面。而皮肤的话，简单点说可以比成是一个主题拨号界面的增强版。所以如果你的主题是偏向于锁屏交互很厉害的，或者主题图标和壁纸很讨喜的，而拨号界面又是平平淡淡的话，这样你直接移植过来，做成搜狗皮肤，震撼力肯定就大打折扣了。
+                    </p>
+                    <p>
+                       所以如何把你优秀主题的震撼力从搜狗皮肤上也表达出来，这就是关键！正所谓麻雀虽小五脏俱全！一个优秀的皮肤，它不仅仅是一个很简单的界面，更多的是一种整体感，一种对题材格式的整体把握。有些东西我通过文字很难表述，我接下来会给大家举些实际的例子，这些都是我们团队出品的一些非常优秀的皮肤作品，希望大家能通过我给出的这些实际例子来感受一下如何从手机主题转型到搜狗皮肤上来。<br />
+                        以下分享几个从手机主题转型过来的设计师同学做的皮肤案例吧~
+                    </p>
+                </div>
+                <img src="static/i/sjyq/img4_02.png" />
+                <div class="myTxt hTxt">
+                    <p>
+                        整体上和手机主题的风格很搭配了，但是给人的感觉就像是换了个背景而已，如果想走中国风，可以在整体风格上再加上更多中国风元素，比如在按钮或者功能按键的地方加上笔墨、梅花等中国风元素，让皮肤整体感觉是丰满起来。                
+                    </p>
+                </div>
+                <img src="static/i/sjyq/img4_03.png" />
+                <div class="myTxt hTxt">
+                    <p>
+                        这款手机主题把当下的热点事物成功的加入到了皮肤中去，每个按钮都能体现出中国年的那种喜庆感，然后很巧妙的加入了中国年的各种元素，比如鞭炮、中国结、金元宝、祥云、铜钱、对联等等。使得皮肤整体代入感不错。                
+                    </p>
+                </div>
+                <img src="static/i/sjyq/img4_04.png" />
+                <div class="myTxt hTxt">
+                    <p>
+                        这个卡通人物是BenS团队成员帝洞移原创的：獾子贝贝，这类原创风格的卡通人物，加上对皮肤整体的把握，加入卡通人物的一些相关生活用品、起居环境等元素的使用，比较完美的转换成了同款皮肤。
+                    </p>
+                    <P>
+                        从以上几个案例分析，不难看出，从手机主题到输入法皮肤不是简简单单的移植，而是加入了更多的元素，让皮肤更加充实，更加有整体感。                
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--//.main_con-->
+<?php include template('footer');?>
+
+<script type="text/javascript">
+
+	//返回顶端方法
+	$(window).scroll(function () {
+		//添加节点
+		if ($("#return_top").length < 1) {
+			var $a = $("<a href='javascript:;scroll(0,0);'  title='返回顶端' alt='返回顶端'></a>");
+			var node = document.createElement("div");
+			node.setAttribute("id", "return_top");
+			document.body.appendChild(node);
+			$("#return_top").append($a);
+		}
+		//判断是否显示
+		if ($(window).scrollTop()) {
+	
+			$("#return_top").show();
+		} else {
+	
+			$("#return_top").hide();
+		}
+	});
+
+</script>
+<script type="text/javascript">$(function(){setTimeout(function(){pb_count('page_authorshare_2')},250)});</script>

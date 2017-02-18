@@ -1,0 +1,53 @@
+<?php include template(header);?>
+		<div class="wrapper index_wrap">
+			<div class="mainWrap">
+				<div class="tit_wrap">
+					<img src="static/i/alitit.png" class="imgwap"/>
+				</div>
+				<div class="wrap_show_box">
+					<img src="static/i/alishowtit.png" class="imgblock" />
+					<div class="show_hd">
+						<ul class="show_hdul tab-hd">
+							<a class="show_pc btn_tb active" href="javascript:void(0);" onclick="MtaH5.clickStat('14')"></a>
+							<a class="show_3g btn_tb" href="pcshow.php" onclick="MtaH5.clickStat('15')"></a>
+							<a class="show_pri btn_tb" href="prize.php" onclick="MtaH5.clickStat('16')"></a>
+						</ul>
+					</div>
+					<div class="show_bd">
+						<ul class="show_bdul tab-bd">
+							<!--手机-->
+							<?php 
+								if($count < 1){
+									echo "<div class=\"forward\"></div>";
+								}
+							?>
+							<li <?php if($count < 1)echo "style='display:none;'"; ?>>
+								<ul class="show_3g_skin">
+									<?php 
+										foreach($content as $k=>$val){
+											echo '<li><div class="show_3g_skinimg"><img src="'.$val['pickey9'].'" width="252" height="207" class="imgwap"/></div><div class="show_3g_skincon show_skinall cl"><span class="tname">'.$val['skin_name'].'</span><span class="fr">by.'.$val['author_name'].'</span></div></li>';
+										}
+									?>
+									
+								</ul>
+								<?php echo $pageinfo;?>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php include template(footer); ?>
+		</div>		
+	</body>
+<style>
+.pg{
+   width: 1001px;
+   bottom: 66px;
+} 
+</style>
+<script>
+	$(function(){
+		
+	});
+</script>
+</html>

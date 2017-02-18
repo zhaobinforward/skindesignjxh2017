@@ -1,0 +1,46 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php include template('header');?>
+<?php if(!empty($list) && is_array($list)){?><script type="text/javascript">var skins = <?php echo json_encode($list)?>;</script><?php }?>
+<style type="text/css">
+	.title_box{ /*background:url(static/i/cszp/nocansai.png) no-repeat center top;*/}
+	a.cansai,a.huojiang{ /*display:none;*/ }
+</style>
+<div class="main_con">
+	<div class="cszp_box">
+    	<div class="cszp_con">
+        	<div class="cszp_title">
+            	<div class="title_box">
+                    <a href="gallery.php" class="cansai"></a>
+                    <a href="gallery.php?view=hits" class="huojiang"></a>
+                </div>
+            </div>
+            <div class="works_con">
+				<?php if($list){?>
+				<?php $ii=0;$len=count($list);?>
+				<ul class="cl">
+				<?php foreach($list as $value){?>
+					<?php $ii++?>
+					<li class="<?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+                    	<div class="works_img"><img src="<?php echo$value['pickey26']?>" /></div>
+                        <div class="works_txt">
+                        	<div class="works_mes">
+                            	<p class="work_name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],27,'..')?></p>
+								<p class="author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],18,'..')?></p>
+                            </div>
+                            <a href="javascript:;" class="myShare" onclick="show_share(<?php echo $value['id']?>)"><img src="static/i//sharebtn.png" /></a>
+                        </div>
+                    </li>
+				<?php }?>
+				</ul>
+				<?php } else {?>
+				<div class="noer">暂无更多作品..</div>
+				<?php }?>
+            </div>
+        </div>
+    </div>
+	<div class="pgWrap"><?php echo$pageshow;?></div>
+	<div class="cooper" style="width:1074px;margin:0 auto;"><p>合作方：<img src="static/i/logo_uichina.png" /></p></div>
+	<div class="noer" style="width:100%;height:40px;"></div>
+</div><!--//.main_con-->
+<script type="text/javascript">$(function(){setTimeout(function(){pb_count('page_gallery')},250)});</script>
+<?php include template('footer');?>

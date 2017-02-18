@@ -1,0 +1,50 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php include template('header');?>
+<style type="text/css">
+	.authorshare_3_box{ width:100%; padding-bottom:75px; }
+	.subBtn ul li.authorShare a{ background:url(static/i/sjyq/navBtnhover4.png) no-repeat left bottom; }
+	.nav ul li.sheji a{ width:233px; background:url(static/i/shejiDown.png) no-repeat center center; }
+</style>
+<!-- 返回顶端 -->
+<div id="return_top">
+    <a alt="返回顶端" title="返回顶端" href="javascript:;scroll(0,0);"></a>
+</div>
+
+<div class="main_con">
+	<div class="skin_box">
+    	<div class="skin_con">
+        	<?php include template('subnav');?>
+        	<div class="authorshare_3_box">
+                <img src="static/i/sjyq/img3_01.png" />
+                <img src="static/i/sjyq/img3_02.png" />
+                <img src="static/i/sjyq/img3_03.png" />
+            </div>
+        </div>
+    </div>
+</div><!--//.main_con-->
+<?php include template('footer');?>
+
+<script type="text/javascript">
+
+	//返回顶端方法
+	$(window).scroll(function () {
+		//添加节点
+		if ($("#return_top").length < 1) {
+			var $a = $("<a href='javascript:;scroll(0,0);'  title='返回顶端' alt='返回顶端'></a>");
+			var node = document.createElement("div");
+			node.setAttribute("id", "return_top");
+			document.body.appendChild(node);
+			$("#return_top").append($a);
+		}
+		//判断是否显示
+		if ($(window).scrollTop()) {
+	
+			$("#return_top").show();
+		} else {
+	
+			$("#return_top").hide();
+		}
+	});
+
+</script>
+<script type="text/javascript">$(function(){setTimeout(function(){pb_count('page_authorshare_3')},250)});</script>
