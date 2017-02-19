@@ -1,0 +1,347 @@
+<?php if(!defined('IN_APP')) die('access denied');?>
+<?php if(empty($_GET['inajax'])){?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录 - 搜狗手机输入法</title>
+<script type="text/javascript" src="./static/j/common.js"></script>
+<script type="text/javascript" src="http://wap.dl.pinyin.sogou.com/wapdl/hole/201411/06/jquery.1.7.1.min.js"></script>
+<script type="text/javascript">var PassportSC = window['PassportSC'] || {};</script>
+<script type="text/javascript" src="http://s.account.sogoucdn.com/u/api/sogou.js?t=2014101117" charset="utf-8"></script>
+<link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="static/c/style.css" />
+</head>
+<body>
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div class="wrapper" style="width:480px;min-width:0;margin:160px auto 0;border:1px solid #eee;background-color:#fff;position:relative">
+<?php }?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style style="text/css">
+.sohu_passport_titlebar{
+	font-size:16px;
+	background:#f88e0f;
+	height:40px;
+	color:#fff;text-indent:18px;
+	line-height:40px;
+	width:480px;
+}
+.passport form {
+	padding-top: 37px;
+	zoom: 1;
+}
+.passport input {
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+.input1 {
+	width: 178px;
+	height: 21px;
+	line-height: 21px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #EBB561;
+}
+
+/*passport*/
+.passportc{
+	margin:0px 40px 0px 50px;
+	width:390px;
+	height:200px;
+	padding-top:45px;
+}
+#passport .main td {
+	height:45px;
+}
+#passport .main td span{
+	color:#8a8a8a;
+	font-size:15px;
+}
+#passport .main td a{
+	color:#3c6bbb;
+	text-decoration:none;
+	font-size:12px;
+}
+#passport .main td .login{
+	border:0;
+	width:83px;
+	height:34px;
+	background-color:#ff8c00;
+	border:1px solid #d68950;
+	color:#fff;
+	cursor:pointer;
+	font-size:14px;
+	line-height:34px;
+}
+/*#passport .main td .login:hover {
+        background:url(static/i/loginbox/sohu-login/loginbox_bg.png) no-repeat -97px -293px;
+}*/
+#passport .i_text {
+	width:231px;
+	height:30px;
+        background:url(static/i/loginbox/sohu-login/loginbox_bg.png) no-repeat -183px -292px;
+	padding:5px 0px 0px 3px;
+}
+#passport .h_i_text {
+	width:231px;
+	height:30px;
+        background:url(static/i/loginbox/sohu-login/loginbox_bg.png) no-repeat -183px -330px;
+	padding:5px 0px 0px 3px;
+}
+#passport .i_text input{
+	border:0;
+	width:220px;
+	height:24px;
+	padding-left:5px;
+	font-size:14px;
+}
+#passport .h_i_text input{
+	border:0;
+	width:220px;
+	height:24px;
+	padding-left:5px;
+	font-size:14px;
+}
+
+/* select 下拉 */
+.ppselecter {border: 1px solid #C0DAF5; /*width: 145px;*/ left:49px;width:229px;z-index:9999999;position:relative}
+.ppselecter, .ppselecter *{font-size:12px;color:#000;} 
+.ppselecter table td table td{padding-left:5px;} 
+.ppselecter, .ppselecter * { font-family:"??????", Verdana, Arial, Helvetica, sans-serif; line-height:normal;}
+.ppselecter .ppseltit {background-color: #E8F2FA;height:15px;padding-top:4px;text-indent:6px; color:#000;}
+.ppselecter table td table td {padding: 3px;padding-left:8px;height:23px;height:17px\9;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.ppselecter table td table td {height:17px;}
+}
+.ppselecter .active {background:#BBDEFA; color:#fff; font-weight: normal;}
+.ppselecter table tr td table tr td{border:0;}
+.ppselecter table tr td{border:0;}
+.sel_tips{font-size:12px;color:#64B6FA;padding:5px;background:#E8F2FA;}
+#passport .main td span.ch_box{font-size:12px;}
+#passport .main td span.ch_box input{ vertical-align: middle;}
+
+/* 登录中 */
+.ppWaitMsg{
+	background:url(http://www.sohu.com/passport/images/topic/load.gif) no-repeat center 25px;color:#FF6000;padding-top:80px;padding-left:30px;font-size:12px;font-weight: normal;
+}
+
+/* 登录后 */
+.passportc .listContA a, .passportc .listContA a:link, .passportc .listContA a:hover, .passportc .listContA a:visited {
+    color: #0C52A2;
+}   
+.pptitle2{
+	padding-top:25px;
+}
+.passportc .listContA{
+	width:227px;
+	margin-left:6px;
+    height:65px;border:1px #A8B0BD solid;background:#fff;
+    /*margin:1px 3px 0px -1px!important;margin:8px 3px 0px -1px;*/
+    color:#000;
+    padding:5px; 
+    line-height:17px;
+	margin-top:1px;
+    text-align:left;
+}
+.passportc .listContA ul{margin-top:7px!important;margin-top:9px;margin-left:8px;}
+.passportc .listContA li{margin-bottom:7px;}
+.passportc .listContA li p{color:#313031;}
+    
+.passportc .middle{color:#FF6000;margin-left:6px;}
+.passportc .middle li{float:left;margin-top:6px;margin-left:5px;}
+.passportc .middle li img{background:url(http://www.sohu.com/passport/images/topic/pic005.gif) no-repeat;width:34px;height:13px;}
+.passportc .middle .current{
+    padding:0px 7px 2px 7px;
+    margin:-1px 0px 0px 0px!important;/*for ie*/
+    background:#fff;
+    border:1px #A8B0BD solid;border-top:0px;
+}
+.passportc .bottom{color:#FF6000;clear: both;}
+.passportc .bottom ul{margin-left:0px!important;margin-left:-10px;}
+.passportc .bottom li{float:left;margin-top:6px;margin-left:5px;}
+.passportc .bottom .dabenying{float:right;margin-top:1px;}
+.passportc .bottom .dabenying img{width:54px;height:21px;background:url(http://www.sohu.com/passport/images/topic/pic007.gif) no-repeat;bo
+rdr:0;}
+.passportc .candle{position: absolute;top:12px;left:220px;}
+.pptitle2 a, .pptitle2 a:link, .pptitle2 a:hover,.pptitle2 a:visited{
+    margin-left:20px; color:#0C52A2;
+}
+.loginerr{ 
+height:34px; width:231px; line-height:30px; background:url(static/i/loginbox/sohu-login/loginerror.gif) no-repeat top left; 
+color:#FF0000; font-size:12px;position:absolute;top:50px;left:119px;display:none; 
+} 
+.loginerr span{ width:14px; height:14px; display:block; margin:6px 8px; background:url(static/i/loginbox/sohu-login/loginerror.gif) no-repeat 0px -35px; float:left;} 
+.loginword{ width:170px; float:left;line-height:30px;} 
+.loginclose{color:#666666;cursor:pointer;font-family:'黑体';font-size:16px;font-weight:bold; width:20px; height:34px; float:left;} 
+.loginclose:hover{ color:#FF6600;}
+.loginclose a{text-decoration:none;color:#666}
+</style>
+<div class="sohu_passport_titlebar">搜狗通行证</div>
+<div id="sohu_passport"></div>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+PassportSC.appid = "1044";
+PassportSC.redirectUrl = '<?php echo$siteurl;?>jump.html';
+PassportSC.registerUrl='https://account.sogou.com/web/reg/nick?client_id=1044&ru='+encodeURIComponent(location.href);
+PassportSC.loginRedirectUrl = '<?php echo$rurl;?>';
+PassportSC._drawLoginForm = function() {
+	var innerHtml = '<div id="passport">';
+	innerHtml += '<form method="post" onsubmit="return PassportSC.doLogin();" name="loginform">';
+	innerHtml += '<div class="content_wrapper">';
+	innerHtml += '<div class="left"></div>';
+	innerHtml += '<div class="main">';
+	innerHtml += '<table width="100%" cellspacing="0" cellpadding="0" class="m_table">';
+	innerHtml += '<tr>';
+	innerHtml += '<td width="65"><span class="lab">\u7528\u6237\u540d\uff1a</span></td>';
+	innerHtml += '<td width="250"><div class="i_text" id="i_text_1" ><input onfocus="psfocus(1);" onblur="psfocus(2);" name="email" type="text" autocomplete="off" disableautocomplete size="30"></div></td>';
+	innerHtml += '<td><a href="'+PassportSC.registerUrl+'" target="_blank">\u6ce8\u518c\u65b0\u7528\u6237</a></td>';
+	innerHtml += '</tr>';
+	innerHtml += '<tr>';
+	innerHtml += '<td  width="65"><span class="lab">\u5bc6&nbsp;\u7801\uff1a</span></td>';
+	innerHtml += '<td><div class="i_text" id="i_text_2"><input onfocus="psfocus(3);" onblur="psfocus(4);" name="password" type="password" autocomplete="off" disableautocomplete size="30"></div></td>';
+	innerHtml += '<td><a href="'+PassportSC.recoverUrl+'" target="_blank">\u5fd8\u8bb0\u5bc6\u7801\uff1f</a></td>';
+	innerHtml += '</tr>';
+	innerHtml += '<tr>';
+	innerHtml += '<td colspan="3" style="padding:5px 0 0 0;">';
+	innerHtml += '<table width="96%" cellspacing="0" cellpadding="0"><tr><td style="color:#999999;font-size:12px;" width="120">\u4f7f\u7528\u7b2c\u4e09\u65b9\u8d26\u53f7\u767b\u5f55</td><td>'+
+				 '<a href="javascript:_tlogin(\'sina\');" style="margin-right:20px;margin-left:7px;" title="\u4f7f\u7528\u65b0\u6d6a\u8d26\u53f7\u767b\u5f55"><img src="static/i/loginbox/sina.gif" alt="\u4f7f\u7528\u65b0\u6d6a\u8d26\u53f7\u767b\u5f55"/></a>'+
+				 '<a href="javascript:_tlogin(\'qq\');" style="margin-right:20px;" title="\u4f7f\u7528\u0051\u0051\u8d26\u53f7\u767b\u5f55"><img src="static/i/loginbox/qq.gif" alt="\u4f7f\u7528\u0051\u0051\u8d26\u53f7\u767b\u5f55"/></a>'+
+				 '<a href="javascript:_tlogin(\'renren\');" style="margin-right:20px;" title="\u4f7f\u7528\u4eba\u4eba\u8d26\u53f7\u767b\u5f55"><img src="static/i/loginbox/renren.gif" alt="\u4f7f\u7528\u4eba\u4eba\u8d26\u53f7\u767b\u5f55" /></a></td></tr>'+
+				 '</table>';
+	innerHtml += '</td>';
+	innerHtml += '</tr>';
+	innerHtml += '</table>';
+	innerHtml += '<div class="loginerr"><span></span><div class="loginword">\u7528\u6237\u540d\u6216\u5bc6\u7801\u9519\u8bef\uff01</div><div class="loginclose"><a href="javascript:errorClose();">x</a></div></div>';
+	innerHtml += '<div class="btn_bar"><table cellspacing="0" cellpadding="0" class="btn_t"><tr><td width="65">&nbsp;</td><td width="150"><span class="ch_box"><label><input name="persistentcookie" type="checkbox" value="1"/>\u8bb0\u4f4f\u5bc6\u7801</label></span></td><td width="85"><input type="submit" value="\u767b \u5f55" class="btn login" onfocus="this.blur()" src="http://www.sohu.com/passport/images/topic/spacer.gif" alt="\u767b\u5f55" /></td></tr></table></div>';
+	innerHtml += '</div>';
+	innerHtml += '<div class="right"></div>';
+	innerHtml += '</div>';
+	innerHtml += '</form>';
+	innerHtml += '<div class="b_bg"></div>';
+	innerHtml += '</div>';
+	this.cElement.innerHTML = innerHtml;
+};
+
+function psfocus(n) {
+	var id = n <= 2 ? "i_text_1": "i_text_2";
+	if (n == 1 || n == 3) {
+		jQuery("#" + id).addClass("h_i_text");
+		jQuery("#" + id).removeClass("i_text");
+	} else {
+		jQuery("#" + id).addClass("i_text");
+		jQuery("#" + id).removeClass("h_i_text");
+	}
+}
+function errorClose() {
+	jQuery('.loginerr').fadeOut(1000);
+}
+
+/*第三方登陆*/
+function _tlogin(i) {
+    //var u = window.location.href;
+    window.location.href = "https://account.sogou.com/connect/login?provider=" + i + "&client_id=1044&ru=" + encodeURIComponent(PassportSC.loginRedirectUrl);
+}
+
+PassportSC.showMsg = function(e){
+	//jQuery(".loginerr .loginword").html(e);
+	jQuery(".loginerr").fadeIn(1000,
+	function() {
+		setTimeout(function() {
+			jQuery(".loginerr").fadeOut(1000)
+		},
+		3000)
+	});
+}
+
+PassportSC.drawPassportWait = function(str) {};
+
+PassportSC._drawPassportCard = function() {
+	var html = '<div style="margin:50px auto;width:50px;height:50px;"><img class="passportloading" src="static/i/loading.gif"></div>';
+		html += '<div id="logon" class="b_bg"><div id="ppcontid" style="display:none;"></div><div class="listContA" style="display:none;"></div></div>';
+	if (this.defaultApp != "") {}
+	this.cElement.innerHTML = html;
+};
+
+PassportSC.logoutSuccessCall = function() {
+	logoutApp();
+}
+
+/*通行证相关*/
+$(function(){
+	PassportSC.appid = "1044";
+	PassportSC.max_line_length = 20;
+	PassportSC.drawPassport(document.getElementById('sohu_passport'));
+});
+function drawAppInfo(ele) {
+	ele.style.height = "100px";
+	ele.style.width = "300px";
+	var loader = '<div style="background:transparent url(static/i/loading.gif) no-repeat scroll center 25px;padding-left:30px;padding-top:80px;"></div>';
+	ele.innerHTML = loader;
+	var uid = PassportSC.cookieHandle();
+	if (uid != null && uid != "") {
+		if((window.location.href).replace(SITEURL, '').substr(0,9) == 'login.php'){
+			window.location.href = 'index.php';
+		} else {
+			window.location.reload();
+		}
+	} else {
+		{
+			window.location.reload();
+			window.name = 1;
+		}
+	}
+}
+function logoutApp() {
+	if (isNaN(parseInt(window.name))) {
+		window.name = 0;
+	}
+	window.name = 0;
+	window.location.reload();
+}
+function UrlEncode(str) {
+	var ret = "";
+	var strSpecial = "!\"#$%&()*+,/:;<=>?[]^`{|}~%";
+	for (var i = 0; i < str.length; i++) {
+		var chr = str.charAt(i);
+		var c = str2asc(chr);
+		tt += chr + ":" + c + "n";
+		if (parseInt("0x" + c) > 0x7f) {
+			ret += "%" + c.slice(0, 2) + "%" + c.slice( - 2);
+		} else {
+			if (chr == " ") ret += "+";
+			else if (strSpecial.indexOf(chr) != -1) ret += "%" + c.toString(16);
+			else ret += chr;
+		}
+	}
+	return ret;
+}
+
+function UrlDecode(str) {
+	var ret = "";
+	for (var i = 0; i < str.length; i++) {
+		var chr = str.charAt(i);
+		if (chr == "+") {
+			ret += " ";
+		} else if (chr == "%") {
+			var asc = str.substring(i + 1, i + 3);
+			if (parseInt("0x" + asc) > 0x7f) {
+				ret += asc2str(parseInt("0x" + asc + str.substring(i + 4, i + 6)));
+				i += 5;
+			} else {
+				ret += asc2str(parseInt("0x" + asc));
+				i += 2;
+			}
+		} else {
+			ret += chr;
+		}
+	}
+	return ret;
+}
+</script>
+<?php if(empty($_GET['inajax'])){?>
+</div>
+<!--.wrapper-->
+</body>
+</html>
+<?php }?>
