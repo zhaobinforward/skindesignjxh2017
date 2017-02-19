@@ -45,7 +45,7 @@ class nMysql {
 			$this->m_host     = "127.0.0.1";
 			$this->m_port     = "3306";
 			$this->m_user     = "root";
-			$this->m_password = "";
+			$this->m_password = "123456";
 			$this->m_charset = $charset;
 			return;
 		}
