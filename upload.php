@@ -5,7 +5,7 @@ require R_ROOT.'/include/inc.session.php';
 
 $reginfo = array();
 if($_G['uid'] > 0) {
-	$sql = "SELECT * FROM `skindesignali_reginfo` WHERE `uid`={$_G['uid']} LIMIT 1";
+	$sql = "SELECT * FROM `skindesignjxh2017_reginfo` WHERE `uid`={$_G['uid']} LIMIT 1";
 	$reginfo = $MDB->db_query($sql);
 	$reginfo = $reginfo[0];
 }
@@ -142,5 +142,5 @@ if(submitcheck('dosubmit')) {
 
 $navigator = array('upload' => ' class="curr"');
 
-include template('upload');
+include template('upskin');
 ?>

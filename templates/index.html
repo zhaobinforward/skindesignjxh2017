@@ -1,4 +1,4 @@
-<?php include template(header); ?>
+<?php include template('header'); ?>
 	<body>
 		<div class="wrapper index_wrap">
 			<div class="bg_head"></div>
@@ -147,8 +147,22 @@
     				</div>
 				</div>
 				<!--copybottom-->
-				<?php include template(footer);?>
+				<?php include template('footer');?>
 			</div>
 		</div>
 	</body>
+<script>
+$(function(){
+	//上传按钮
+	$(".abtn_active2").click(function(){
+		if(_getUser().uid >= 1){
+//			window.open("upload.php");
+		}else{
+			window.open("upload.php");
+			//showLoginBox();
+		}
+	})
+})
+
+</script>
 </html>

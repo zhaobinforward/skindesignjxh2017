@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<link rel="stylesheet" href="static/c/demo.css" />
-		<link rel="stylesheet" href="static/c/style.css" />
-		<link rel="stylesheet" href="static/c/add.css" />
-		<script type="text/javascript" src="static/j/jquery.1.7.1.min.js" ></script>
-	</head>
+<?php include template('header'); ?>
+<script type="text/javascript" src="http://wap.dl.pinyin.sogou.com/wapdl/hole/201411/06/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/c/uploadify.css" />
 	<body>
 		<div class="wrapper index_wrap">
 			<div class="bg_head"></div>
@@ -33,7 +26,9 @@
 				<div class="con_wrap">
 					<div class="phold phold20"></div>
 					<img src="static/i/images/font_upskin.png" class="imgblock" />
-					<form>
+					<form action="" method="post" id="iform">
+						<input type="hidden" name="dosubmit" value="">
+						<input type="hidden" name="formhash" value="">
 						<div class="phold phold30"></div>
 						<div class="form_wrap">
 							<div class="form_box">
@@ -46,7 +41,7 @@
 											昵称：
 										</div>
 										<div class="form_input fl">
-											<input class="input_text" />
+											<input class="input_text" id="nickname" name="nickname"  value=""/>
 										</div>
 									</div>
 									<div class="form_con cl">
@@ -54,7 +49,7 @@
 											手机：
 										</div>
 										<div class="form_input fl">
-											<input class="input_text" />
+											<input class="input_text" id="telnumber" name="telnumber" value="" />
 										</div>
 									</div>
 									<div class="form_con cl">
@@ -62,7 +57,7 @@
 											QQ：
 										</div>
 										<div class="form_input fl">
-											<input class="input_text" />
+											<input class="input_text" id="qq" name="qq" value="" />
 										</div>
 									</div>
 									<div class="form_con cl">
@@ -70,7 +65,7 @@
 											邮箱：
 										</div>
 										<div class="form_input fl">
-											<input class="input_text" />
+											<input class="input_text" id="email" name="email" value="" />
 										</div>
 									</div>
 									<div class="phold phold25"></div>
@@ -81,7 +76,7 @@
 											名称：
 										</div>
 										<div class="form_input fl">
-											<input class="input_text" placeholder="限定在20字符（10个汉字）以内" />
+											<input class="input_text" id="skin_name" name="skin_name" placeholder="限定在20字符（10个汉字）以内" />
 										</div>
 									</div>
 									<div class="form_con cl">
@@ -89,7 +84,7 @@
 											简称：
 										</div>
 										<div class="form_input fl">
-											<input class="input_text" placeholder="限定在10字符（5个汉字）以内"/>
+											<input class="input_text" id="short_name" name="short_name" placeholder="限定在10字符（5个汉字）以内"/>
 										</div>
 									</div>
 									<div class="form_con cl">
@@ -121,8 +116,266 @@
 					</form>
 				</div>
 				<!--copybottom-->
-				<div class="copybgsg"></div>
+				<?php include template('footer');?>
 			</div>
 		</div>
 	</body>
+<script>
+	var max_pic_size = '<?php echo str_replace(' ', '', formatsize(MAX_PIC_SIZE));?>';
+$(function(){
+	$('.activeguifan').click(function(){
+		$('#activeguize').addClass('disblock');
+	});
+	$('.close').click(function(){
+		$('.maskbox').removeClass('disblock');
+	});
+	$('.up3g').click(function(){
+		if(_getUser().uid >= 1){
+			$('#maskup3g').addClass('disblock');
+		}else{
+			showLoginBox();
+		}
+	});
+
+	//初始化uploadify
+	$('#skin_name').DefaultValue();
+	$('#short_name').DefaultValue();
+	init_uploader('pic');
+
+	//提交表单内容
+	$('#iform').ajaxForm({
+		dataType: 'json',
+		beforeSubmit: function() {
+			if($('#submitbtn').attr('disabled') || !check_form()) {
+				return false;
+			}
+			$('#submitbtn').attr('disabled', true);
+			$('#ajaxwaitid').show();
+			showwaiting('ajaxwaitid');
+		},
+		complete: function(XMLHttpRequest, status) {
+			$('#submitbtn').attr('disabled', false);
+			$('#ajaxwaitid').hide();
+			clearwaiting('ajaxwaitid');
+			if(status == 'timeout') {
+				XMLHttpRequest.abort();
+				showNotice('请求超时。');
+			}
+		},
+		success: function(resp) {
+			//alert(1111111+resp.status);
+			if(typeof resp != 'object') {
+				try{
+					resp = JSON.parse(resp);
+				} catch(e) {
+					showNotice('响应失败');
+					return;
+				}
+			}
+			if(resp.status == 2) {
+				showLoginBox();
+				return;
+			} else {
+				showNotice(resp.message, 1.5);
+				if(resp.status > 0) {//save success
+					setTimeout(function(){window.location.href='index.php'},1550)
+					return;
+				}
+			}
+		},
+		error:function() {
+			showNotice('响应失败。');
+		}
+	});
+});
+//检测表单输入
+function check_form() {
+	if(_getUser().uid < 1) {
+//		showLoginBox();
+//		return false;
+	}
+	if($('#submitbtn').attr('disabled')) {
+		return false;
+	}
+	var nickname = $.trim($('#nickname').val());
+	var qq = $.trim($('#qq').val());
+	var telnumber = $.trim($('#telnumber').val());
+	var email = $.trim($('#email').val());
+	var skin_name = $.trim($('#skin_name').val());
+	var short_name = $.trim($('#short_name').val());
+
+	if($('#nickname').length > 0) {
+		if(nickname.length < 1) {
+			$('#nickname').focus();
+			showerr('nickname', '没有填写昵称');
+			return false;
+		}
+	}
+	if($('#qq').length > 0) {
+		if(qq.length < 1) {
+			$('#qq').focus();
+			showerr('qq', '没有填写qq');
+			return false;
+		}
+		if(!/^[0-9]+$/i.test(qq)) {
+			$('#qq').focus();
+			showerr('qq', 'qq号码应由数字组成');
+			return false;
+		}
+	}
+	if($('#telnumber').length > 0) {
+		if(telnumber.length < 1) {
+			$('#telnumber').focus();
+			showerr('telnumber', '没有填写手机');
+			return false;
+		}
+		if(!/^1[34578]\d{9}$/i.test(telnumber)) {
+			$('#telnumber').focus();
+			showerr('telnumber', '手机格式不正确，请填写正确的手机号');
+			return false;
+		}
+	}
+	if($('#email').length > 0) {
+		if(email.length < 1) {
+			$('#email').focus();
+			showerr('email', '没有填写邮箱');
+			return false;
+		}
+		if(!/^([A-Za-z0-9\-_.+]+)@([A-Za-z0-9\-]+[.][A-Za-z0-9\-.]+)$/.test(email)) {
+			$('#email').focus();
+			showerr('email', '邮箱格式不正确');
+			return false;
+		}
+	}
+
+	if(byteLength(skin_name) < 1 || byteLength(skin_name) > 20) {
+		$('#skin_name').focus();
+		showerr('skin_name', '没有填写皮肤名称或超过20个字符');
+		return false;
+	}
+
+	if(byteLength(short_name) < 1 || byteLength(short_name) > 10) {
+		showerr('short_name', '没有填写皮肤简称或超过5个字符');
+		return false;
+	}
+
+	if($('input[name="picurl[]"]').length < 2) {
+		showerr('picfile', '没有上传皮肤效果图或少于2张');
+		return false;
+	}
+	return true;
+}
+
+function showerr(id, errmsg) {
+	$('#'+id).focus();
+	showNotice(errmsg, 62.5);
+}
+function hideUploader(type) {
+	$('#'+type+'UploadWrap').hide();
+	$('#'+type+'file').css({width:0,height:0,overflow:'hidden'});
+}
+function showUploader(type) {
+	$('#'+type+'UploadWrap').show();
+	$('#'+type+'file').css({width:'auto',height:'auto',overflow:'visible'});
+}
+function init_uploader(type) {
+	var type = typeof type == 'undefined' ? 'pic' : type.toLowerCase();
+	if(!in_array(type,['pic','rar','ssf'])) {
+		return;
+	}
+	try{$('#'+type+'file').uploadify('destroy')}catch(e){}
+	$('#'+type+'UploadWrap').html(function(){
+		var _html = '';
+		_html += '<div id="'+type+'_queue"></div>';
+		_html += '<input id="'+type+'file" name="'+type+'file" type="file" />';
+		return _html;
+	});
+	showUploader(type);
+	$('#'+type+'ViewWrap').hide().children('#'+type+'View').html('');
+	$('#'+type+'file').uploadify({
+		'method'			: 'POST',
+		'formData'			: {'formhash':'<?php echo formhash();?>','uid':_getUser().uid,'type':type,'dosubmit':'true'},
+		'preventCaching'	: true,
+		'buttonImage'		: 'static/i/upload_n.png',
+		'swf'				: 'static/i/uploadify.swf',
+		'uploader'			: 'uploadify.php?inajax=1',
+		'width'				: 168,
+		'height'			: 47,
+		'multi'				: true,
+		'queueID'			: type+'_queue',
+		'fileSizeLimit'		: type=='pic'?max_pic_size:(type=='rar'?max_rar_size:max_ssf_size),
+		'fileTypeDesc'		: type=='pic'?'图片文件(.jpg .jpeg .gif .png)':(type=='rar'?'压缩包文件(.rar .zip)':'皮肤文件(.ssf)'),
+		'fileTypeExts'		: type=='pic'?'*.jpg;*.jpeg;*.gif;*.png':(type=='rar'?'*.rar;*.zip':'*.ssf'),
+		'queueSizeLimit'	: type=='pic'?2:1,
+		'removeTimeout'		: 2,
+		'overrideEvents'	: ['onDialogClose'],
+		'onSelect'			: function(file) {
+			if(_getUser().uid < 1) {
+				$('#'+type+'file').uploadify('cancel');
+				showLoginBox();
+				return false;
+			}
+		},
+		'onSelectError'		: function(file, errorCode) {
+			if(errorCode == -130) {//INVALID_FILETYPE
+				showNotice('文件类型不允许', 2);
+			} else if(errorCode == -100) {//QUEUE_LIMIT_EXCEEDED
+				showNotice('上传的文件数量太多', 2);
+			} else if(errorCode == -110) {//FILE_EXCEEDS_SIZE_LIMIT
+				showNotice('不能上传大小超过'+(type=='pic'?max_pic_size:(type=='rar'?max_rar_size:max_ssf_size))+'的文件', 2);
+			} else if(errorCode == -120) {//ZERO_BYTE_FILE
+				showNotice('不能上传空的文件', 2);
+			} else {
+				showNotice('加入文件队列失败', 2);
+			}
+			showUploader(type);
+		},
+		'onCancel'			: function(file) {showUploader(type)},
+		'onUploadStart'		: function(file) {},
+		'onUploadProgress'	: function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {},
+		'onUploadError'		: function(file, errorCode, errorMsg, errorString) {},
+		'onQueueComplete'	: function(queueData) {
+			if(type == 'pic') {
+				if(queueData.uploadsSuccessful >= 2) {
+					hideUploader(type);
+				}
+			} else {
+				hideUploader(type);
+			}
+		},
+		'onUploadSuccess'	: function(file, data, response) {/* response:boolean*/
+			//showNotice('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data, 2);
+			if(!response) {
+				showUploader(type);
+				showNotice('图片上传失败', 2);
+				return
+			}
+			try{
+				data = eval('(' + data + ')');
+			} catch(e) {
+				showUploader(type);
+				showNotice('响应数据不正确', 2);
+				return ;
+			}
+			if(data.status < 1) {
+				showUploader(type);
+				showNotice(data.message, 2);
+				return ;
+			}
+			$('#'+type+'ViewWrap').show().children('#'+type+'View').html(function(){
+				return $.trim($(this).html())+($.trim($(this).html())==''?'<span>':'<span>')+file.name+'</span><input type="hidden" name="'+(type=='pic'?'picurl[]':(type=='rar'?'rarfile':'ssffile'))+'" value="'+data.data+'"/>';
+			});
+		},
+		'onUploadComplete'	: function(file) {
+			if($.trim($('#'+type+'View').html())==''){init_uploader(type)}
+		},
+		'debug'				: false,
+	});
+}
+
+function byteLength(sStr) {
+	aMatch = sStr.match(/[^\x00-\x80]/g);
+	return (sStr.length + (! aMatch ? 0 : aMatch.length));
+}
+</script>
 </html>
