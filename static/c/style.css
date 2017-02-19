@@ -1,7 +1,7 @@
 @charset 'utf-8';
 *{word-wrap:break-word}
 *, body, div, span, ul, li, table, tbody, th, tr, td, img, a, input, select, option, p {margin:0;padding:0}
-html, body {overflow-x:hidden;width:100%;margin:0 auto;text-align:left;padding:0;-webkit-text-size-adjust:none;font:12px/1.5 "Hiragino Sans GB",微软雅黑,宋体,serif,Arial;color:#666;background-color:#fff}
+/*html, body {overflow-x:hidden;width:100%;margin:0 auto;text-align:left;padding:0;-webkit-text-size-adjust:none;font:12px/1.5 "Hiragino Sans GB",微软雅黑,宋体,serif,Arial;color:#666;background-color:#fff}*/
 textarea{resize:none}
 *,body,ul,ol,li,dl,dd,p,h1,h2,h3,h4,h5,h6,form,fieldset{margin:0;padding:0}
 table{empty-cells:show;border-collapse:collapse}
@@ -26,6 +26,7 @@ body{ font-family:"Hiragino Sans GB","微软雅黑" ,"宋体"}
 .colLast{margin-bottom:0}
 .cutstr{vertical-align:text-bottom;word-wrap:normal;white-space:nowrap;overflow:hidden;-o-text-overflow:ellipsis;/* Opera */ text-overflow:ellipsis;/* IE, Safari (WebKit) */}
 .noer{color:#999;padding:5px;font-size:14px}
+.top_con{position:relative;z-index:1000;}
 
 #ajaxwaitid{display:none;position:fixed;_position:absolute;right:0;top:0;z-index:1;padding:0 5px;background:#D00;color:#FFF}
 .wrapper{width:100%;min-width:1000px;margin:0 auto;zoom:1;_width:expression((document.documentElement.clientWidth || document.body.clientWidth) < 1000 ? "1000px" : "auto")}
@@ -38,7 +39,7 @@ body{ font-family:"Hiragino Sans GB","微软雅黑" ,"宋体"}
 .logo_box img {padding-top:6px;}
 .login{height:40px; float:right; line-height:40px;  }
 .login a{font-size:12px; font-family:"宋体"; color:#fff;}
-/*top end*/
+top end
 
 .banner_con{ width:100%; height:586px; position:relative; }
 .banner{ height:586px; background:#976ad4 url(../i/banner.png) no-repeat center 0; }
@@ -342,3 +343,8 @@ body{ font-family:"Hiragino Sans GB","微软雅黑" ,"宋体"}
 	height: 87px;
 	background: url(../i/images/abtn_sub.png) no-repeat center center;
 }
+
+/*foooter*/
+.footer{width:100%;color:#fff;font-size:20px;text-align:center}
+.footer a{color:#fff}
+.footerCont{padding:98px 0;margin:0}
