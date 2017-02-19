@@ -89,9 +89,9 @@ class nMysql {
 				//die('Could not connect: ' . mysql_error());
 				die($this->Err("mysql connect"));
 			}
-			mysqli_query("SET NAMES '". $this->m_charset ."'");
+			mysqli_query($this->m_link,"SET NAMES '". $this->m_charset ."'");
 			if ('' != $this->m_name) {
-				mysqli_select_db($this->m_name, $this->m_link) or die($this->Err("use $this->m_name"));
+				mysqli_select_db($this->m_link,$this->m_name ) or die($this->Err("use $this->m_name"));
 			}             
 		}
 	}
@@ -102,7 +102,7 @@ class nMysql {
 			if ($this->m_link == 0) {
 				$this->_initconnection();
 			}
-			mysqli_select_db($this->m_name, $this->m_link) or die($this->Err("use $database"));
+			mysqli_select_db($this->m_link,$this->m_name) or die($this->Err("use $database"));
 		}
 	}
 
@@ -110,7 +110,7 @@ class nMysql {
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		$result=mysqli_query($SQL,$this->m_link) or die($this->Err($SQL));
+		$result=mysqli_query($this->m_link,$SQL) or die($this->Err($SQL));
 		return $result; 
 	} 
 	
@@ -138,7 +138,7 @@ class nMysql {
 			}
 		}
 
-		$result=mysqli_query($SQL, $this->m_link) or die($this->Err($SQL));
+		$result=mysqli_query($this->m_link,$SQL) or die($this->Err($SQL));
 		
 		return $result; 
 	}
@@ -165,7 +165,7 @@ class nMysql {
 			}
 		}
 
-		$result=mysqli_query($SQL, $this->m_link) or die($this->Err($SQL));
+		$result=mysqli_query($this->m_link,$SQL ) or die($this->Err($SQL));
 		return $this->FetchAll($result);
 	}
 	
@@ -229,7 +229,7 @@ class nMysql {
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		return @mysqli_query($sql, $this->m_link) ? 1 : 0;
+		return @mysqli_query($this->m_link,$sql) ? 1 : 0;
 	}
 
 	/**	功能 写入数据至表
@@ -251,7 +251,7 @@ class nMysql {
 			$this->_initconnection();
 		}
 		error_log($sql,3,"/tmp/sqlxxxx.log");
-		return @mysqli_query($sql, $this->m_link) ? ($return_insert_id ? @mysqli_insert_id($this->m_link) : 1) : 0;
+		return @mysqli_query($this->m_link , $sql) ? ($return_insert_id ? @mysqli_insert_id($this->m_link) : 1) : 0;
 	}
 	
 	function FreeResult(&$result) { 

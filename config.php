@@ -63,8 +63,8 @@ $_G['onlineip'] =  empty($_G['ips']) || strpos($_G['ips'], ',') === false ? $_G[
 $_G['cookies'] = $_COOKIE;
 
 //DB
-//$MDB = new nMysql('sogou_shoujiwap', array('charset'=>'utf8'));
-//$SDB = &$MDB;
+$MDB = new nMysql('sogou_shoujiwap', array('charset'=>'utf8'));
+$SDB = &$MDB;
 
 /**	是否产品模式
  *	@param void
