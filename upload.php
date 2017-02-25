@@ -4,11 +4,11 @@ require 'config.php';
 require R_ROOT.'/include/inc.session.php';
 
 $reginfo = array();
-//if($_G['uid'] > 0) {
-//	$sql = "SELECT * FROM `skindesignjxh2017_reginfo` WHERE `uid`={$_G['uid']} LIMIT 1";
-//	$reginfo = $MDB->db_query($sql);
-//	$reginfo = $reginfo[0];
-//}
+if($_G['uid'] > 0) {
+	$sql = "SELECT * FROM `skindesignjxh2017_reginfo` WHERE `uid`={$_G['uid']} LIMIT 1";
+	$reginfo = $MDB->db_query($sql);
+	$reginfo = $reginfo[0];
+}
 
 //处理提交
 if(submitcheck('dosubmit')) {

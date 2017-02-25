@@ -181,7 +181,7 @@ class nMysql {
 		if($this->m_link == 0) {
 			$this->_initconnection();
 		}
-		$row = mysqli_fetch_array($result, MYSQL_ASSOC);
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		return $row;
 	}
 
@@ -192,7 +192,7 @@ class nMysql {
 			$this->_initconnection();
 		}
 		$rows = array();
-		while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+		while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 			$rows[] = $row;
 		}
 		return $rows;

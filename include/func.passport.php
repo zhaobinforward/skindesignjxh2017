@@ -153,7 +153,7 @@ function get_user($uid, $type = 'uid') {
 	if(empty($uid)) {
 		return $user;
 	}
-	$sql = "SELECT * FROM `skindesignali_user` WHERE `{$key}`='{$uid}' LIMIT 1";
+	$sql = "SELECT * FROM `skindesignjxh2017_user` WHERE `{$key}`='{$uid}' LIMIT 1";
 	if(!$user = $SDB->FetchArray($SDB->Query($sql))) {
 		$user = array();
 	}

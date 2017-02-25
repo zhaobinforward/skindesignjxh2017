@@ -36,37 +36,7 @@
 									<div class="phold phold20"></div>
 									<div class="form_tit">个人信息：</div>
 									<div class="phold phold25"></div>
-									<div class="form_con cl">
-										<div class="form_infor fl">
-											昵称：
-										</div>
-										<div class="form_input fl">
-											<input class="input_text" id="nickname" name="nickname"  value=""/>
-										</div>
-									</div>
-									<div class="form_con cl">
-										<div class="form_infor fl">
-											手机：
-										</div>
-										<div class="form_input fl">
-											<input class="input_text" id="telnumber" name="telnumber" value="" />
-										</div>
-									</div>
-									<div class="form_con cl">
-										<div class="form_infor fl">
-											QQ：
-										</div>
-										<div class="form_input fl">
-											<input class="input_text" id="qq" name="qq" value="" />
-										</div>
-									</div>
-									<div class="form_con cl">
-										<div class="form_infor fl">
-											邮箱：
-										</div>
-										<div class="form_input fl">
-											<input class="input_text" id="email" name="email" value="" />
-										</div>
+									<div class="author_info">
 									</div>
 									<div class="phold phold25"></div>
 									<div class="form_tit">皮肤信息：</div>
@@ -126,10 +96,44 @@
 						</div>
 						<div class="phold phold40"></div>
 						<div class="cl form_btn_box">
-							<a class="a_btn a_btn_backindex fl"></a>
+							<a class="a_btn a_btn_backindex fl" href="index.php" target="_self"></a>
 							<input type="submit"  class="a_btn a_btn_sub fr" value=""/>
 						</div>
 					</form>
+				</div>
+				<div id="reginfo" style="display:none">
+					<div class="form_con cl">
+						<div class="form_infor fl">
+							昵称：
+						</div>
+						<div class="form_input fl">
+							<input class="input_text" id="nickname" name="nickname"  value="<?php echo $reginfo['nickname'] ?>"/>
+						</div>
+					</div>
+					<div class="form_con cl">
+						<div class="form_infor fl">
+							手机：
+						</div>
+						<div class="form_input fl">
+							<input class="input_text" id="telnumber" name="telnumber" value="<?php echo $reginfo['telnumber'] ?>" />
+						</div>
+					</div>
+					<div class="form_con cl">
+						<div class="form_infor fl">
+							QQ：
+						</div>
+						<div class="form_input fl">
+							<input class="input_text" id="qq" name="qq" value="<?php echo $reginfo['qq'] ?>" />
+						</div>
+					</div>
+					<div class="form_con cl">
+						<div class="form_infor fl">
+							邮箱：
+						</div>
+						<div class="form_input fl">
+							<input class="input_text" id="email" name="email" value="<?php echo $reginfo['email'] ?>" />
+						</div>
+					</div>
 				</div>
 				<!--copybottom-->
 				<?php include template('footer');?>
@@ -138,14 +142,16 @@
 	</body>
 <script>
 var max_pic_size = '<?php echo str_replace(' ', '', formatsize(MAX_PIC_SIZE));?>';
-
+var reged = <?php echo !empty($reginfo)?'true':'false'; ?>;
 $(function(){
-	$('.activeguifan').click(function(){
-		$('#activeguize').addClass('disblock');
-	});
-	$('.close').click(function(){
-		$('.maskbox').removeClass('disblock');
-	});
+	if(reged){//已报名
+		$(".author_info").html(function(){
+			return '<p class="regtip">您已填写报名信息，<a href="javascript:;" onclick="javascript:$(this).parent().hide().parent().append($(\'#reginfo\'));$(\'#reginfo\').show();">点此修改</a>。</p>';
+		});
+	}else{//未报名
+		$(".author_info").append($("#reginfo"));
+		$("#reginfo").show();
+	}
 	$('.up3g').click(function(){
 		if(_getUser().uid >= 1){
 			$('#maskup3g').addClass('disblock');
