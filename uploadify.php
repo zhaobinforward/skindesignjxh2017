@@ -27,6 +27,7 @@ if(submitcheck('dosubmit')) {
 	} else {
 		$result = upload($_FILES['Filedata'], array('ssf'), MAX_SSF_SIZE, DATA_ROOT, 'upload');
 	}
+
 	if($result['status'] != 1) {//uploaded fail
 		$message = '';
 		switch($result['status']) {
@@ -60,22 +61,22 @@ if(submitcheck('dosubmit')) {
 			@unlink(DATA_ROOT."/{$filedir}/{$filename}");
 			showmessage("上传的不是有效的图片文件", 0);
 		}
-		if($imagesize[0] != 1080 || $imagesize[1] != 887) {
+		if($imagesize[0] != 1080 || $imagesize[1] != 881) {
 			@unlink(DATA_ROOT."/{$filedir}/{$filename}");
 			showmessage("上传的图片的尺寸不正确", 0);
 		}
 		
-		//转移至云存储
-		$flag = upload_cloud(DATA_ROOT."/{$filedir}/{$filename}", $filename);
-		if(!is_array($flag) || !isset($flag[0]['status']) || $flag[0]['status'] != 0) {
-			@unlink(DATA_ROOT."/{$filedir}/{$filename}");
-			showmessage("存储图片失败({$flag[0]['status']})", 0);
-		}
+//		//转移至云存储
+//		$flag = upload_cloud(DATA_ROOT."/{$filedir}/{$filename}", $filename);
+//		if(!is_array($flag) || !isset($flag[0]['status']) || $flag[0]['status'] != 0) {
+//			@unlink(DATA_ROOT."/{$filedir}/{$filename}");
+//			showmessage("存储图片失败({$flag[0]['status']})", 0);
+//		}
 		@file_put_contents(DATA_ROOT.'/picfilename.txt', "{$filedir}/{$filename}\r\n", FILE_APPEND);
 	}
 	
 	//unlink
-	@unlink(DATA_ROOT."/{$filedir}/{$filename}");
+//	@unlink(DATA_ROOT."/{$filedir}/{$filename}");
 	
 	showmessage('upload_success', 1, '', 2, "{$filedir}/{$filename}");
 }

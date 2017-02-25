@@ -337,6 +337,8 @@ function submitcheck($var) {
 		preg_replace("/https?:\/\/([^\:\/]+).*/i", "\\1", $_SERVER['HTTP_REFERER']) == preg_replace("/([^\:]+).*/", "\\1", $_SERVER['HTTP_HOST']))) {
 			return true;
 		} else {
+			echo "111";
+			exit;
 			showmessage('submit_invalid');
 		}
 	}

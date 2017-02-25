@@ -1,6 +1,6 @@
 <?php include template('header'); ?>
-<script type="text/javascript" src="http://wap.dl.pinyin.sogou.com/wapdl/hole/201411/06/jquery.uploadify.min.js"></script>
-<link rel="stylesheet" type="text/css" href="static/c/uploadify.css" />
+<script type="text/javascript" src="static/j/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/c/uploadify.css?t=123" />
 	<body>
 		<div class="wrapper index_wrap">
 			<div class="bg_head"></div>
@@ -27,8 +27,8 @@
 					<div class="phold phold20"></div>
 					<img src="static/i/images/font_upskin.png" class="imgblock" />
 					<form action="" method="post" id="iform">
-						<input type="hidden" name="dosubmit" value="">
-						<input type="hidden" name="formhash" value="">
+						<input type="hidden" name="dosubmit" value="true">
+						<input type="hidden" name="formhash" value="<?php echo formhash();?>">
 						<div class="phold phold30"></div>
 						<div class="form_wrap">
 							<div class="form_box">
@@ -94,12 +94,28 @@
 										<div class="form_input fl">
 											<p class="form_p1">宽度1080px，高度881px，每张不超过3MB</p>
 											<div class="cl">
-												<div class="add_file_box">
-													<input type="file" class="input_file"/>
+												<div class="add_file_box" id="add_file_box1">
+													<div id="picUploadWrap1" class="picUploadWrap"></div>
+													<div id="picViewWrap1">
+														<img id="picurl1" class="showpic" src="" >
+														<span class="success1">上传成功！</span>
+														<div id="picView1" class="picView">
+															<span>文件名xxxxxxxxxxx.png</span>
+														</div>
+														<div class="delete" ><img src="static/i/delete.png" onclick="init_uploader('pic',1);"/></div>
+													</div>
 													<p class="p_file">上传九键皮肤文件</p>
 												</div>
-												<div class="add_file_box">
-													<input type="file" class="input_file"/>
+												<div class="add_file_box" id="add_file_box2">
+													<div id="picUploadWrap2" class="picUploadWrap"></div>
+													<div id="picViewWrap2">
+														<img id="picurl2" class="showpic" src="" >
+														<span class="success2">上传成功！</span>
+														<div id="picView2" class="picView">
+															<span>文件名xxxxxxxxxxx.png</span>
+														</div>
+														<div class="delete" ><img src="static/i/delete.png" onclick="init_uploader('pic',2);"/></div>
+													</div>
 													<p class="p_file">上传二十六键皮肤文件</p>
 												</div>
 											</div>
@@ -121,7 +137,8 @@
 		</div>
 	</body>
 <script>
-	var max_pic_size = '<?php echo str_replace(' ', '', formatsize(MAX_PIC_SIZE));?>';
+var max_pic_size = '<?php echo str_replace(' ', '', formatsize(MAX_PIC_SIZE));?>';
+
 $(function(){
 	$('.activeguifan').click(function(){
 		$('#activeguize').addClass('disblock');
@@ -140,7 +157,8 @@ $(function(){
 	//初始化uploadify
 	$('#skin_name').DefaultValue();
 	$('#short_name').DefaultValue();
-	init_uploader('pic');
+	init_uploader('pic',1);
+	init_uploader('pic',2);
 
 	//提交表单内容
 	$('#iform').ajaxForm({
@@ -163,7 +181,6 @@ $(function(){
 			}
 		},
 		success: function(resp) {
-			//alert(1111111+resp.status);
 			if(typeof resp != 'object') {
 				try{
 					resp = JSON.parse(resp);
@@ -211,18 +228,6 @@ function check_form() {
 			return false;
 		}
 	}
-	if($('#qq').length > 0) {
-		if(qq.length < 1) {
-			$('#qq').focus();
-			showerr('qq', '没有填写qq');
-			return false;
-		}
-		if(!/^[0-9]+$/i.test(qq)) {
-			$('#qq').focus();
-			showerr('qq', 'qq号码应由数字组成');
-			return false;
-		}
-	}
 	if($('#telnumber').length > 0) {
 		if(telnumber.length < 1) {
 			$('#telnumber').focus();
@@ -235,6 +240,19 @@ function check_form() {
 			return false;
 		}
 	}
+	if($('#qq').length > 0) {
+		if(qq.length < 1) {
+			$('#qq').focus();
+			showerr('qq', '没有填写qq');
+			return false;
+		}
+		if(!/^[0-9]+$/i.test(qq)) {
+			$('#qq').focus();
+			showerr('qq', 'qq号码应由数字组成');
+			return false;
+		}
+	}
+
 	if($('#email').length > 0) {
 		if(email.length < 1) {
 			$('#email').focus();
@@ -270,37 +288,37 @@ function showerr(id, errmsg) {
 	$('#'+id).focus();
 	showNotice(errmsg, 62.5);
 }
-function hideUploader(type) {
-	$('#'+type+'UploadWrap').hide();
-	$('#'+type+'file').css({width:0,height:0,overflow:'hidden'});
+function hideUploader(type,id) {
+	$('#'+type+'UploadWrap'+id).hide();
+	$('#'+type+'file'+id).css({width:0,height:0,overflow:'hidden'});
 }
-function showUploader(type) {
-	$('#'+type+'UploadWrap').show();
-	$('#'+type+'file').css({width:'auto',height:'auto',overflow:'visible'});
+function showUploader(type,id) {
+	$('#'+type+'UploadWrap'+id).show();
+	$('#'+type+'file'+id).css({width:'auto',height:'auto',overflow:'visible'});
 }
-function init_uploader(type) {
+function init_uploader(type,id) {
 	var type = typeof type == 'undefined' ? 'pic' : type.toLowerCase();
 	if(!in_array(type,['pic','rar','ssf'])) {
 		return;
 	}
-	try{$('#'+type+'file').uploadify('destroy')}catch(e){}
-	$('#'+type+'UploadWrap').html(function(){
+	try{$('#'+type+'file'+id).uploadify('destroy')}catch(e){}
+	$('#'+type+'UploadWrap'+id).html(function(){
 		var _html = '';
-		_html += '<div id="'+type+'_queue"></div>';
-		_html += '<input id="'+type+'file" name="'+type+'file" type="file" />';
+		_html += '<div id="'+type+'_queue'+id+'"></div>';
+		_html += '<input id="'+type+'file'+id+'" name="'+type+'file'+id+'" type="file" />';
 		return _html;
 	});
-	showUploader(type);
-	$('#'+type+'ViewWrap').hide().children('#'+type+'View').html('');
-	$('#'+type+'file').uploadify({
+	showUploader(type,id);
+	$('#'+type+'ViewWrap'+id).hide().children('#'+type+'View'+id).html('');
+	$('#'+type+'file'+id).uploadify({
 		'method'			: 'POST',
 		'formData'			: {'formhash':'<?php echo formhash();?>','uid':_getUser().uid,'type':type,'dosubmit':'true'},
 		'preventCaching'	: true,
-		'buttonImage'		: 'static/i/upload_n.png',
+		'buttonImage'		: 'static/i/images/add.png',
 		'swf'				: 'static/i/uploadify.swf',
 		'uploader'			: 'uploadify.php?inajax=1',
-		'width'				: 168,
-		'height'			: 47,
+		'width'				: 196,
+		'height'			: 159,
 		'multi'				: true,
 		'queueID'			: type+'_queue',
 		'fileSizeLimit'		: type=='pic'?max_pic_size:(type=='rar'?max_rar_size:max_ssf_size),
@@ -309,12 +327,13 @@ function init_uploader(type) {
 		'queueSizeLimit'	: type=='pic'?2:1,
 		'removeTimeout'		: 2,
 		'overrideEvents'	: ['onDialogClose'],
+		'buttonText'        : '',
 		'onSelect'			: function(file) {
-			if(_getUser().uid < 1) {
-				$('#'+type+'file').uploadify('cancel');
-				showLoginBox();
-				return false;
-			}
+//			if(_getUser().uid < 1) {
+//				$('#'+type+'file').uploadify('cancel');
+//				showLoginBox();
+//				return false;
+//			}
 		},
 		'onSelectError'		: function(file, errorCode) {
 			if(errorCode == -130) {//INVALID_FILETYPE
@@ -328,46 +347,48 @@ function init_uploader(type) {
 			} else {
 				showNotice('加入文件队列失败', 2);
 			}
-			showUploader(type);
+			showUploader(type,id);
 		},
-		'onCancel'			: function(file) {showUploader(type)},
+		'onCancel'			: function(file) {showUploader(type,id)},
 		'onUploadStart'		: function(file) {},
 		'onUploadProgress'	: function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {},
 		'onUploadError'		: function(file, errorCode, errorMsg, errorString) {},
 		'onQueueComplete'	: function(queueData) {
 			if(type == 'pic') {
 				if(queueData.uploadsSuccessful >= 2) {
-					hideUploader(type);
+					hideUploader(type,id);
 				}
 			} else {
-				hideUploader(type);
+				hideUploader(type,id);
 			}
 		},
 		'onUploadSuccess'	: function(file, data, response) {/* response:boolean*/
 			//showNotice('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data, 2);
 			if(!response) {
-				showUploader(type);
+				showUploader(type,id);
 				showNotice('图片上传失败', 2);
 				return
 			}
 			try{
 				data = eval('(' + data + ')');
 			} catch(e) {
-				showUploader(type);
+				showUploader(type,id);
 				showNotice('响应数据不正确', 2);
 				return ;
 			}
 			if(data.status < 1) {
-				showUploader(type);
+				showUploader(type,id);
 				showNotice(data.message, 2);
 				return ;
 			}
-			$('#'+type+'ViewWrap').show().children('#'+type+'View').html(function(){
-				return $.trim($(this).html())+($.trim($(this).html())==''?'<span>':'<span>')+file.name+'</span><input type="hidden" name="'+(type=='pic'?'picurl[]':(type=='rar'?'rarfile':'ssffile'))+'" value="'+data.data+'"/>';
+			$("#"+type+"UploadWrap"+id).hide();
+			$('#picurl'+id).attr('src','data/'+data.data);
+			$('#'+type+'ViewWrap'+id).show().children('#'+type+'View'+id).html(function(){
+				return $.trim($(this).html())+('<span>')+file.name+'</span><input type="hidden" name="'+(type=='pic'?'picurl[]':(type=='rar'?'rarfile':'ssffile'))+'" value="'+data.data+'"/>';
 			});
 		},
 		'onUploadComplete'	: function(file) {
-			if($.trim($('#'+type+'View').html())==''){init_uploader(type)}
+			if($.trim($('#'+type+'View'+id).html())==''){init_uploader(type,id)}
 		},
 		'debug'				: false,
 	});
