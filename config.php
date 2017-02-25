@@ -13,6 +13,7 @@ define('SITE_AUTHKEY', 'sogoushouji~!@');//站点加密串
 define('COOKIE_DOMAIN', '.shouji.sogou.com');
 define('TIMESTAMP', time());//入口时间戳
 define('CLOUD_URL', 'http://img.sogoucdn.com/app/a/100540022/');//云图url,一定要以/结尾
+define('LOCAL_URL', 'data/');//本地存储
 define('PC_PIC','http://dl.pinyin.sogou.com/cache/skins/');//pc 皮肤图片cdn地址前缀
 define('PC_DL','http://download.pinyin.sogou.com/skins/download.php?skin_id=');//pc皮肤下载地址
 define('WAPDL_URL', 'http://img.shouji.sogou.com/wapdl/');//wapdl url,一定要以/结尾

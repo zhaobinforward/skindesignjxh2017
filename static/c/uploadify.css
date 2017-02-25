@@ -6,10 +6,21 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 .uploadify {
 	position: relative;
-	margin-bottom: 1em;
+	margin-bottom: 4px;
 }
-.uploadify-button {
-
+.uploadify-button{
+	background-color:#FFFFFF;
+	background-position-x: center;
+	background-position-y: center;
+	background-size: initial;
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+	background-attachment: initial;
+	background-origin: initial;
+	background-clip: initial;
+	border: 2px dashed #f7d152;
+	width: 196px;
+	height: 159px;
 }
 .uploadify:hover .uploadify-button {
 	background-image: url("../i/upload_h.png");
@@ -53,4 +64,9 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	background-color: #0099FF;
 	height: 3px;
 	width: 1px;
+}
+.showpic{
+	width:200px;
+	height:163px;
+	display:block;
 }

@@ -20,6 +20,7 @@ CREATE TABLE `skindesignjxh2017_upload` (
   `uid` int(10) unsigned NOT NULL DEFAULT '0',
   `skin_name` varchar(32) NOT NULL,
   `short_name` varchar(16) NOT NULL,
+  `intro` varchar(255) NOT NULL,
   `author_name` varchar(32) NOT NULL,
   `pickey9` varchar(255) NOT NULL,
   `pickey26` varchar(255) NOT NULL,

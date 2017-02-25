@@ -132,15 +132,13 @@
     				<div class="works_wrap">
     					<div class="phold phold10"></div>
     					<ul class="works_indexul cl">
-    						<li>
-    							<img src="static/i/images/skin.png" />
-    						</li>
-    						<li>
-    							<img src="static/i/images/skin.png" />
-    						</li>
-    						<li>
-    							<img src="static/i/images/skin.png" />
-    						</li>
+							<?php
+							 	if(count($wtop3) == 3){
+							 		foreach($wtop3 as $k=>$v){
+										echo "<li><img src='".$v["pickey9"]."' width='303px' height='247px'/></li>";
+									}
+							 	}
+							?>
     					</ul>
     					<div class="phold phold20"></div>
     					<a class="a_btn a_btn_more"></a>

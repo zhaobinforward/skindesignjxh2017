@@ -133,8 +133,6 @@ function showMenu(v) {
 			coverObj.style.backgroundColor = '#000';
 			coverObj.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity='+opacity*100+')';
 			coverObj.style.opacity = opacity;
-			alert('document.documentElement.clientHeight:'+document.documentElement.clientHeight);
-			alert('document.body.offsetHeight:'+document.body.offsetHeight);
 			if(coverclick > 0){
 				if(coverclick == 1){
 					coverObj.onclick = function(){hideMenu(menuid, mtype, beforefunc, afterfunc)};

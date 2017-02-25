@@ -361,7 +361,17 @@ top end
 	color: #666666;
 	
 }
+.regtip{
+	padding: 0;
+	font-size: 20px;
+	color: #333333;
+	text-align: center;
+}
+.regtip a{
+	color:#f7d152;
+}
 .p_file{
+	width:200px;
 	font-size: 18px;
 	line-height: 46px;
 	color: #666666;
