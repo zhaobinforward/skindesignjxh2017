@@ -57,7 +57,7 @@ if($passportid) {
 		$user['salt'] = random(8);
 		$user['create_time'] = TIMESTAMP;
 		
-		$insert_id = $MDB->insert_table('skindesignali_user', $user, true);
+		$insert_id = $MDB->insert_table('skindesignjxh2017_user', $user, true);
 		if($insert_id < 1) {
 			clear_cookies();
 			showmessage('save_user_fail', 0);
