@@ -21,9 +21,9 @@ if(submitcheck('dosubmit')) {
 		}
 	}
 	
-//	if($_G['uid'] < 1) {
-//		showmessage('need_login', 2, 'login.php');
-//	}
+	if($_G['uid'] < 1) {
+		showmessage('need_login', 2, 'login.php');
+	}
 	//获取参数
 	$_POST['nickname'] = getVar('nickname');
 	$_POST['qq'] = getVar('qq');

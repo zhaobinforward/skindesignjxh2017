@@ -1,0 +1,146 @@
+<?php include template('header'); ?>
+	<body>
+		<div class="wrapper index_wrap">
+			<div class="bg_head"></div>
+			<div class="mainWrap">
+				<div class="bannertit">
+					<div class="phold phold55"></div>
+					<img src="static/i/images/bannertit.png" />
+					<div class="phold phold30"></div>
+					<div class="cl abtn_wrap">
+						<div class="abtn_box">
+							<a class="a_btn abtn_active abtn_active1"></a>
+						</div>
+						<div class="abtn_box">
+							<a class="a_btn abtn_active abtn_active2"></a>
+						</div>
+						<div class="abtn_box">
+							<a class="a_btn abtn_active abtn_active3"></a>
+						</div>
+					</div>
+				</div>
+				<div class="phold phold30"></div>
+				<!--内容区-->
+				<div class="con_wrap">
+					<div class="tab_wrap cl">
+						<div class="tab tab_1"><a href="./"></a></div>
+						<div class="tab tab_2"><a href="gallery.php?view=all"></a></div>
+						<div class="tab tab_3 active"><a href="gallery.php?view=hits"></a></div>
+					</div>
+					<div class="tab_line"></div>
+					<div class="phold phold40"></div>
+					<!--内容区域start-->
+					<?php if(empty($list)){?>
+					<div class="noer" style="height:600px;background:url(static/i/bisai-ing.png) no-repeat scroll 50% 50%"></div>
+					<?php } else {?>
+						<?php if(isset($list[10]) && count($list[10]) > 0){?>
+						<?php $value = $list[10][0];?>
+					<div class="hits-list cl">
+						<div class="grade-title">
+							<span class="grade-title-bg">
+								<span class="grade-title-bg2"><span class="grade-title-txt">姜小虎最爱奖</span></span>
+							</span>
+						</div>
+						<div class="zuopin-item">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?=$value['piccover']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
+							<div class="zuopin-foot cl">
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
+							</div>
+						</div>
+					</div>
+						<?php }?>
+						<?php if(isset($list[9]) && count($list[9]) > 0){?>
+						<?php $value = $list[9][0];?>
+					<div class="hits-list cl">
+						<div class="grade-title">
+							<span class="grade-title-bg">
+								<span class="grade-title-bg2"><span class="grade-title-txt">姜小虎最潮奖</span></span>
+							</span>
+						</div>
+						<div class="zuopin-item">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?=$value['piccover']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
+							<div class="zuopin-foot cl">
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
+							</div>
+						</div>
+					</div>
+						<?php }?>
+						<?php if(isset($list[8]) && count($list[8]) > 0){?>
+						<?php $value = $list[8][0];?>
+					<div class="hits-list cl">
+						<div class="grade-title">
+							<span class="grade-title-bg">
+								<span class="grade-title-bg2"><span class="grade-title-txt">姜小虎最美奖</span></span>
+							</span>
+						</div>
+						<div class="zuopin-item">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?=$value['piccover']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
+							<div class="zuopin-foot cl">
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
+							</div>
+						</div>
+					</div>
+						<?php }?>
+						<?php if(isset($list[7]) && count($list[7]) > 0){?>
+						<?php $value = $list[7][0];?>
+					<div class="hits-list cl">
+						<div class="grade-title">
+							<span class="grade-title-bg">
+								<span class="grade-title-bg2"><span class="grade-title-txt">姜小虎最酷奖</span></span>
+							</span>
+						</div>
+						<div class="zuopin-item">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?=$value['piccover']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
+							<div class="zuopin-foot cl">
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
+							</div>
+						</div>
+					</div>
+						<?php }?>
+						<?php if(isset($list[6]) && count($list[6]) > 0){?>
+						<?php $value = $list[6][0];?>
+					<div class="hits-list cl">
+						<div class="grade-title">
+							<span class="grade-title-bg">
+								<span class="grade-title-bg2"><span class="grade-title-txt">姜小虎最潮奖</span></span>
+							</span>
+						</div>
+						<div class="zuopin-item">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?=$value['piccover']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
+							<div class="zuopin-foot cl">
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
+							</div>
+						</div>
+					</div>
+						<?php }?>
+						
+						<?php if(isset($list[5]) && count($list[5]) > 0){?>
+						<?php $ylist = $list[5];?>
+						<?php $ii=0;$len=count($ylist);?>
+					<div class="zuopin-list cl">
+						<div class="grade-title">
+							<span class="grade-title-bg">
+								<span class="grade-title-bg2"><span class="grade-title-txt">姜小虎优秀奖</span></span>
+							</span>
+						</div>
+						<?php foreach($ylist as $value){?>
+						<?php $ii++?>
+						<div class="zuopin-item <?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?php echo$value['pickey26']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
+							<div class="zuopin-foot cl">
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
+							</div>
+						</div>
+						<?php }?>
+					</div>
+						<?php }?>
+						
+					<?php }?>
+					<!--内容区域end-->
+				</div>
+				<!--copybottom-->
+				<?php include template('footer');?>
+			</div>
+		</div>
+	</body>
+</html>

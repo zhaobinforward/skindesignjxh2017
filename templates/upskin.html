@@ -214,8 +214,8 @@ $(function(){
 //检测表单输入
 function check_form() {
 	if(_getUser().uid < 1) {
-//		showLoginBox();
-//		return false;
+		showLoginBox();
+		return false;
 	}
 	if($('#submitbtn').attr('disabled')) {
 		return false;
@@ -335,11 +335,11 @@ function init_uploader(type,id) {
 		'overrideEvents'	: ['onDialogClose'],
 		'buttonText'        : '',
 		'onSelect'			: function(file) {
-//			if(_getUser().uid < 1) {
-//				$('#'+type+'file').uploadify('cancel');
-//				showLoginBox();
-//				return false;
-//			}
+			if(_getUser().uid < 1) {
+				$('#'+type+'file').uploadify('cancel');
+				showLoginBox();
+				return false;
+			}
 		},
 		'onSelectError'		: function(file, errorCode) {
 			if(errorCode == -130) {//INVALID_FILETYPE

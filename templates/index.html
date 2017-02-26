@@ -23,9 +23,9 @@
 				<!--内容区-->
 				<div class="con_wrap">
 					<div class="tab_wrap cl">
-						<div class="tab tab_1 active"><a></a></div>
-						<div class="tab tab_2"><a></a></div>
-						<div class="tab tab_3"><a></a></div>
+						<div class="tab tab_1 active"><a href="./"></a></div>
+						<div class="tab tab_2"><a href="gallery.php?view=all"></a></div>
+						<div class="tab tab_3"><a href="gallery.php?view=hits"></a></div>
 					</div>
 					<div class="tab_line"></div>
 					<div class="phold phold40"></div>
@@ -154,10 +154,9 @@ $(function(){
 	//上传按钮
 	$(".abtn_active2").click(function(){
 		if(_getUser().uid >= 1){
-//			window.open("upload.php");
-		}else{
 			window.open("upload.php");
-			//showLoginBox();
+		}else{
+			showLoginBox();
 		}
 	})
 })

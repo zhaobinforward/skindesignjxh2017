@@ -38,10 +38,10 @@ if($_GET['view'] == 'all' || ($_GET['view'] == 'me' && !empty($loginuser))) {//È
 		$wheresql .= " AND `checked`=1";
 	}
 	
-	$sql = "SELECT COUNT(`id`) AS `count` FROM `skindesign2016_upload` WHERE {$wheresql}";
+	$sql = "SELECT COUNT(`id`) AS `count` FROM `skindesignjxh2017_upload` WHERE {$wheresql}";
 	$count = $MDB->db_query($sql);
 	if(0<($count = $count[0]['count'])) {
-		$sql = "SELECT * FROM `skindesign2016_upload` WHERE {$wheresql} ORDER BY {$ordersql} LIMIT {$start},{$_GET['perpage']}";
+		$sql = "SELECT * FROM `skindesignjxh2017_upload` WHERE {$wheresql} ORDER BY {$ordersql} LIMIT {$start},{$_GET['perpage']}";
 		$query = $MDB->Query($sql);
 		while($tmp = $MDB->FetchArray($query)) {
 			$tmp['piccover'] = empty($tmp['piccover'])?'':(substr($tmp['piccover'],0,4)=='http'?$tmp['piccover']:($tmp['status']==1?CLOUD_URL.basename($tmp['piccover']):WAPDL_URL.$tmp['piccover']));
@@ -55,9 +55,8 @@ if($_GET['view'] == 'all' || ($_GET['view'] == 'me' && !empty($loginuser))) {//È
 	}
 	
 } elseif($_GET['view'] == 'hits') {//»ñ½±×÷Æ·
-	@include R_ROOT.'/include/inc.session.php';
 	//²éÑ¯»ñ½±µÄ×÷Æ·²¢group by
-	$sql = "SELECT * FROM `skindesign2016_upload` WHERE `checked`=1 AND `hit`=1 AND `grade`>0 ORDER BY `grade` DESC, `listorder` DESC LIMIT 100";
+	$sql = "SELECT * FROM `skindesignjxh2017_upload` WHERE `checked`=1 AND `hit`=1 AND `grade`>0 ORDER BY `grade` DESC, `listorder` DESC LIMIT 100";
 	$query = $MDB->Query($sql);
 	while($tmp = $MDB->FetchArray($query)) {
 		$tmp['piccover'] = empty($tmp['piccover'])?'':(substr($tmp['piccover'],0,4)=='http'?$tmp['piccover']:($tmp['status']==1?CLOUD_URL.basename($tmp['piccover']):WAPDL_URL.$tmp['piccover']));
@@ -65,11 +64,8 @@ if($_GET['view'] == 'all' || ($_GET['view'] == 'me' && !empty($loginuser))) {//È
 		$tmp['pickey26'] = empty($tmp['pickey26'])?'':(substr($tmp['pickey26'],0,4)=='http'?$tmp['pickey26']:($tmp['status']==1?CLOUD_URL.basename($tmp['pickey26']):WAPDL_URL.$tmp['pickey26']));
 		$list[$tmp['grade']][] = $tmp;
 	}
-//	if($_G['uid'] == 1 || $_G['uid'] == 3029 || $_G['uid'] == 8) {
-//		showmessage('', 0, 'gallery.php', 0);
-//	}
 	$navigator = array('gallery' => ' class="curr"');
-	include template('gallery_hits.bak');exit;
+	include template('gallery_hits');exit;
 }
 
 $navigator = array('gallery' => ' class="curr"');
