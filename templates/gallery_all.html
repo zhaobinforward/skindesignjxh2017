@@ -23,106 +23,30 @@
 				<!--内容区-->
 				<div class="con_wrap">
 					<div class="tab_wrap cl">
-						<div class="tab tab_1 active"><a></a></div>
-						<div class="tab tab_2"><a></a></div>
-						<div class="tab tab_3"><a></a></div>
+						<div class="tab tab_1"><a href="./"></a></div>
+						<div class="tab tab_2 active"><a href="gallery.php?view=all"></a></div>
+						<div class="tab tab_3"><a href="gallery.php?view=hits"></a></div>
 					</div>
 					<div class="tab_line"></div>
 					<div class="phold phold40"></div>
 					<!--内容区域start-->
-					<style type="text/css">
-					.noer{overflow:hidden}
-					.zuopin-item {
-						width: 304px;
-						height: 294px;
-						float: left;
-						display: inline;
-						position: relative;
-						margin: 0 16px 40px 0;
-					}
-					.zuopin-item.row-first {}
-					.zuopin-item.col-first {}
-					.zuopin-item.row-last {margin-right: 0}
-					.zuopin-item.col-last {margin-bottom: 0}
-					.zuopin-img, .zuopin-img-inner {
-						width: 304px;
-						height: 248px;
-						overflow: hidden;
-						text-align: center;
-						font-size: 0;
-					}
-					.zuopin-img {
-					}
-					.zuopin-img-inner {
-						display: table-cell;
-						vertical-align: middle;
-					}
-					.zuopin-img-inner img {
-						max-width: 100%;
-						max-height: 100%;
-						_width: 100%;
-						_height: 100%;
-					}
-					.zuopin-foot {
-						width: 96%;
-						height: 36px;
-						margin: 10px 0 0;
-						padding: 0 2%;
-						font-size: 16px;
-						-webkit-border-radius: 8px;
-						-o-border-radius: 8px;
-						border-radius: 8px;
-						background-color: #e6e6e6;
-					}
-					.zuopin-name, .zuopin-author {
-						height: 100%;
-						float:left;
-						color: #5c0004;
-						line-height: 36px;
-					}
-					.zuopin-author {
-						float:right;
-					}
-					</style>
-					<div class="noer" style="height:600px;background:url(static/i/bisai-ing.png) no-repeat scroll 50% 50%"></div>
+					<?php if($list){?>
 					<div class="zuopin-list cl">
-						<div class="zuopin-item">
-							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="static/i/sample.png" /></div></div>
+					<?php $ii=0;$len=count($list);?>
+					<?php foreach($list as $value){?>
+						<?php $ii++?>
+						<div class="zuopin-item <?php if($ii%3==0){?>rowLast<?php }?><?php if($len-$ii<=($len%3==0?3:($len%3))){?> colLast<?php }?>">
+							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="<?php echo$value['pickey26']?>" onerror="this.src='static/i/404.png';this.onerror=null;" /></div></div>
 							<div class="zuopin-foot cl">
-								<p class="zuopin-name">虎虫</p><p class="zuopin-author">by.十月桃桃</p>
+								<p class="zuopin-name" title="<?php echo $value['skin_name']?>"><?php echo cutstr($value['skin_name'],45,'..')?></p><p class="zuopin-author" title="<?php echo $value['author_name']?>">by.&nbsp;<?php echo cutstr($value['author_name'],30,'..')?></p>
 							</div>
 						</div>
-						<div class="zuopin-item">
-							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="static/i/sample.png" /></div></div>
-							<div class="zuopin-foot cl">
-								<p class="zuopin-name">虎虫</p><p class="zuopin-author">by.十月桃桃</p>
-							</div>
-						</div>
-						<div class="zuopin-item row-last">
-							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="static/i/sample.png" /></div></div>
-							<div class="zuopin-foot cl">
-								<p class="zuopin-name">虎虫</p><p class="zuopin-author">by.十月桃桃</p>
-							</div>
-						</div>
-						<div class="zuopin-item col-last">
-							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="static/i/sample.png" /></div></div>
-							<div class="zuopin-foot cl">
-								<p class="zuopin-name">虎虫</p><p class="zuopin-author">by.十月桃桃</p>
-							</div>
-						</div>
-						<div class="zuopin-item col-last">
-							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="static/i/sample.png" /></div></div>
-							<div class="zuopin-foot cl">
-								<p class="zuopin-name">虎虫</p><p class="zuopin-author">by.十月桃桃</p>
-							</div>
-						</div>
-						<div class="zuopin-item col-last row-last">
-							<div class="zuopin-img"><div class="zuopin-img-inner"><img src="static/i/sample.png" /></div></div>
-							<div class="zuopin-foot cl">
-								<p class="zuopin-name">虎虫</p><p class="zuopin-author">by.十月桃桃</p>
-							</div>
-						</div>
+					<?php }?>
 					</div>
+					<div class="pgWrap"><?php echo$pageshow;?></div>
+					<?php } else {?>
+					<div class="noer" style="height:600px;background:url(static/i/bisai-ing.png) no-repeat scroll 50% 50%"></div>
+					<?php }?>
 					<!--内容区域end-->
 				</div>
 				<!--copybottom-->
