@@ -12,7 +12,7 @@ CREATE TABLE `skindesignjxh2017_reginfo` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 CREATE TABLE `skindesignjxh2017_upload` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -22,6 +22,7 @@ CREATE TABLE `skindesignjxh2017_upload` (
   `short_name` varchar(16) NOT NULL,
   `intro` varchar(255) NOT NULL,
   `author_name` varchar(32) NOT NULL,
+  `piccover` varchar(255) NOT NULL,
   `pickey9` varchar(255) NOT NULL,
   `pickey26` varchar(255) NOT NULL,
   `digest` tinyint(1) NOT NULL DEFAULT '0',
