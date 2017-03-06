@@ -63,49 +63,49 @@
     							<div class=" prize_tit">
     								姜小虎最美奖 (1名)
     							</div>
-    							<div class="prize_img">
+    							<a class="prize_img" href="http://www.csmall.com/product/item/220E03B00003.html" target="_blank">
     								<img src="static/i/images/prize1.png" />
-    							</div>
+    							</a>
     						</li>
     						<li>
     							<div class=" prize_tit">
     								姜小虎最酷奖 (1名)
     							</div>
-    							<div class="prize_img">
+    							<a class="prize_img" href="http://www.csmall.com/product/item/220C03A00004.html" target="_blank">
     								<img src="static/i/images/prize2.png" />
-    							</div>
+    							</a>
     						</li>
     						<li>
     							<div class=" prize_tit">
     								姜小虎最爱奖 (1名)
     							</div>
-    							<div class="prize_img">
+    							<a class="prize_img" href="http://mall.deepoon.com/" target="_blank">
     								<img src="static/i/images/prize3.png" />
-    							</div>
+    							</a>
     						</li>
     						<li>
     							<div class=" prize_tit">
     								姜小虎最乐奖 (1名)
     							</div>
-    							<div class="prize_img">
+    							<a class="prize_img" href="http://item.jd.com/3995486.html" target="_blank">
     								<img src="static/i/images/prize4.png" />
-    							</div>
+    							</a>
     						</li>
     						<li>
     							<div class=" prize_tit">
     								姜小虎最潮奖 (1名)
     							</div>
-    							<div class="prize_img">
+    							<a class="prize_img" href="https://v.qq.com/x/cover/s3u0uz36g3s2a28.html?vid=o03446l3za8" target="_blank">
     								<img src="static/i/images/prize5.png" />
-    							</div>
+    							</a>
     						</li>
     						<li>
     							<div class=" prize_tit">
     								姜小虎优秀奖 (6名)
     							</div>
-    							<div class="prize_img">
+    							<a class="prize_img" href="http://weibo.com/iwhome" target="_blank">
     								<img src="static/i/images/prize6.png" />
-    							</div>
+    							</a>
     						</li>
     					</ul>
     				</div>
@@ -127,13 +127,17 @@
     				<img src="static/i/images/tit5.png" class="imgblock" />
     				<!--没有作品时的状态-->
     				<div class="phold phold45"></div>
-    				<img src="static/i/images/no_zp.png" class="imgblock" />
+    				<?php
+    					if(count($wtop3) <=3 ){
+    						echo '<img src="static/i/images/no_zp.png" class="imgblock" />';
+						}
+					?>
     				<!--作品超过3个以上的状态-->
     				<div class="works_wrap">
     					<div class="phold phold10"></div>
     					<ul class="works_indexul cl">
 							<?php
-							 	if(count($wtop3) == 3){
+							 	if(count($wtop3) > 3){
 							 		foreach($wtop3 as $k=>$v){
 										echo "<li><img src='".$v["pickey9"]."' width='303px' height='247px'/></li>";
 									}
