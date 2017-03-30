@@ -6,5 +6,5 @@
  * @author sh7ning
  * @since 2017-03-30
  */
-$test = "a";
-$test2 = "b";
+$test = "bdc";
+$test2 = "gfh";
